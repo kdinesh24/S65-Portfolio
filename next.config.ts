@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ["framerusercontent.com"],
+        domains: [
+            "framerusercontent.com",
+            "media.licdn.com",
+            "avatars.githubusercontent.com",
+        ],
     },
-    // Keep any other existing config options
 };
 
 module.exports = nextConfig;

@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowLeft, Search, Mail, ExternalLink } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Search, Linkedin, Github } from "lucide-react";
 import Link from "next/link";
 import {
     Card,
@@ -14,32 +13,31 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 
-// Sample mentor data - would come from API/database in real app
 const mentorsData = [
     {
         id: 1,
         name: "Riza Yeasmin",
         title: "Program Manager",
-        expertise: ["Machine Learning", "Neural Networks", "Computer Vision"],
-        experience: "15+ years",
-        projects: 28,
-        students: 45,
-        bio: "Leading expert in AI with multiple publications in top journals. Formerly at DeepMind.",
-        avatar: "",
+        expertise: ["Creative Thinking", "Communication", "Management Skills"],
+        experience: "1+ years",
+        projects: "2",
+        avatar: "https://media.licdn.com/dms/image/v2/D4D03AQHojOkCJJDHEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1687773530884?e=1748476800&v=beta&t=Tek-50m1ep23jXOGoSzLV0LvgM43KGcu93533rzGBBA",
+        linkedin: "https://www.linkedin.com/in/rizayeasmin",
+        github: "https://github.com/codewithriza",
     },
     {
         id: 2,
         name: "Shashwat Mahendra",
         title: "Technical Mentor",
-        expertise: ["System Design", "Cloud Computing", "Microservices"],
+        expertise: ["Web Deveeopment", "Prompt Engineering", "Data Structures"],
         experience: "12+ years",
-        projects: 34,
-        students: 38,
-        bio: "Ex-Amazon engineer specialized in scalable systems and distributed architectures.",
-        avatar: "",
+        projects: "100+",
+        avatar: "https://avatars.githubusercontent.com/u/115514170?v=4",
+        linkedin: "https://www.linkedin.com/in/shashwat-mahendra-214598163",
+        github: "https://github.com/Shashwat2104",
     },
 ];
 
@@ -49,7 +47,6 @@ export default function MentorsPage() {
     const [animationTriggered, setAnimationTriggered] = useState(false);
 
     useEffect(() => {
-        // Update time every second
         const updateTime = () => {
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, "0");
@@ -61,7 +58,6 @@ export default function MentorsPage() {
         updateTime();
         const interval = setInterval(updateTime, 1000);
 
-        // Trigger animation after component mounts
         setTimeout(() => {
             setAnimationTriggered(true);
         }, 100);
@@ -69,12 +65,10 @@ export default function MentorsPage() {
         return () => clearInterval(interval);
     }, []);
 
-    // Filter mentors based on search term
     const filteredMentors = mentorsData.filter(
         (mentor) =>
             mentor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            mentor.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            mentor.bio.toLowerCase().includes(searchTerm.toLowerCase())
+            mentor.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
@@ -90,7 +84,6 @@ export default function MentorsPage() {
                 }}
             />
 
-            {/* Add this style block for the animation */}
             <style jsx>{`
                 @keyframes gradientMove {
                     0% {
@@ -111,9 +104,8 @@ export default function MentorsPage() {
                 </div>
                 <div className="flex items-center space-x-4">
                     <Link href="/">
-                        <button className="font-mono text-white px-4 py-1 rounded-full border border-white/20">
-                            <ArrowLeft className="w-4 h-4 mr-2 inline" />
-                            BACK
+                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white/10 transition-colors">
+                            ← BACK TO HOME
                         </button>
                     </Link>
                 </div>
@@ -160,6 +152,10 @@ export default function MentorsPage() {
                                 <div className="flex justify-between items-start">
                                     <div className="flex items-center gap-4">
                                         <Avatar className="h-16 w-16 border border-white/20">
+                                            <AvatarImage
+                                                src={mentor.avatar}
+                                                alt={mentor.name}
+                                            />
                                             <AvatarFallback className="bg-white/10 text-white font-mono text-lg">
                                                 {mentor.name.split(" ")[0][0]}
                                                 {mentor.name.split(" ")[1][0]}
@@ -177,20 +173,13 @@ export default function MentorsPage() {
                                 </div>
                             </CardHeader>
                             <CardContent className="space-y-4">
-                                <p className="text-white/80 font-mono text-sm">
-                                    {mentor.bio}
-                                </p>
-
                                 <div>
-                                    <h4 className="font-mono text-sm mb-2 text-white/60">
-                                        EXPERTISE
-                                    </h4>
                                     <div className="flex flex-wrap gap-2">
                                         {mentor.expertise.map((skill) => (
                                             <Badge
                                                 key={skill}
                                                 variant="secondary"
-                                                className="bg-white/10 text-white font-mono text-xs"
+                                                className="bg-white/10 text-white hover:text-black font-mono text-xs"
                                             >
                                                 {skill}
                                             </Badge>
@@ -217,25 +206,29 @@ export default function MentorsPage() {
                                     </div>
                                 </div>
                             </CardContent>
-                            <CardFooter className="justify-between border-t border-white/10 pt-4">
-                                <span className="font-mono text-sm text-white/70">
-                                    Students Mentored: {mentor.students}
-                                </span>
-                                <div className="flex gap-2">
+                            <CardFooter className="flex justify-end border-t border-white/10 pt-4">
+                                <div className="flex space-x-3">
                                     <Button
-                                        variant="outline"
-                                        size="sm"
-                                        className="font-mono text-xs border-white/20"
+                                        variant="ghost"
+                                        className="font-mono text-xs text-white/80 hover:text-black border border-white/20"
+                                        onClick={() =>
+                                            window.open(
+                                                mentor.linkedin,
+                                                "_blank"
+                                            )
+                                        }
                                     >
-                                        <Mail className="h-3 w-3 mr-1" />{" "}
-                                        CONTACT
+                                        <Linkedin className="h-4 w-4 mr-1" />
+                                        CONNECT
                                     </Button>
                                     <Button
-                                        variant="outline"
-                                        size="sm"
-                                        className="font-mono text-xs border-white/20"
+                                        variant="ghost"
+                                        className="font-mono text-xs text-white/80 hover:text-black border border-white/20"
+                                        onClick={() =>
+                                            window.open(mentor.github, "_blank")
+                                        }
                                     >
-                                        <ExternalLink className="h-3 w-3 mr-1" />{" "}
+                                        <Github className="h-4 w-4 mr-1" />
                                         PROFILE
                                     </Button>
                                 </div>

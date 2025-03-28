@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowLeft, Search, Filter } from "lucide-react";
 import Link from "next/link";
 import {
     Card,
@@ -13,63 +12,69 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Github, Linkedin } from "lucide-react";
 
 const studentsData = [
     {
         id: 1,
         name: "Aisha Patel",
         course: "Computer Science",
-        year: 3,
-        skills: ["React", "Node.js", "UI/UX"],
-        projects: 2,
+        skills: ["React", "Node.js", "UI/UX", "JavaScript"],
         avatar: "",
+        github: "https://github.com/aishapatel",
+        linkedin: "https://linkedin.com/in/aishapatel",
     },
     {
         id: 2,
         name: "Dev Sharma",
         course: "AI & Machine Learning",
-        year: 4,
-        skills: ["Python", "TensorFlow", "Data Analysis"],
-        projects: 3,
+        skills: ["Python", "TensorFlow", "Data Analysis", "Machine Learning"],
         avatar: "",
+        github: "https://github.com/devsharma",
+        linkedin: "https://linkedin.com/in/devsharma",
     },
     {
         id: 3,
         name: "Priya Singh",
         course: "Information Technology",
-        year: 2,
-        skills: ["JavaScript", "React", "Firebase"],
-        projects: 1,
+        skills: ["JavaScript", "React", "Firebase", "Next.js"],
         avatar: "",
+        github: "https://github.com/priyasingh",
+        linkedin: "https://linkedin.com/in/priyasingh",
     },
     {
         id: 4,
         name: "Raj Kumar",
         course: "Software Engineering",
-        year: 3,
-        skills: ["Java", "Spring Boot", "MySQL"],
-        projects: 2,
+        skills: ["Java", "Spring Boot", "MySQL", "REST APIs"],
         avatar: "",
+        github: "https://github.com/rajkumar",
+        linkedin: "https://linkedin.com/in/rajkumar",
     },
     {
         id: 5,
         name: "Ananya Gupta",
         course: "Data Science",
-        year: 4,
-        skills: ["Python", "R", "Tableau"],
-        projects: 4,
+        skills: ["Python", "R", "Tableau", "Data Visualization"],
         avatar: "",
+        github: "https://github.com/ananyagupta",
+        linkedin: "https://linkedin.com/in/ananyagupta",
     },
     {
         id: 6,
         name: "Vikram Reddy",
         course: "Cybersecurity",
-        year: 3,
-        skills: ["Network Security", "Ethical Hacking", "Cryptography"],
-        projects: 2,
+        skills: [
+            "Network Security",
+            "Ethical Hacking",
+            "Cryptography",
+            "Penetration Testing",
+        ],
         avatar: "",
+        github: "https://github.com/vikramreddy",
+        linkedin: "https://linkedin.com/in/vikramreddy",
     },
 ];
 
@@ -119,7 +124,6 @@ export default function StudentsPage() {
                 }}
             />
 
-            {/* Add this style block for the animation */}
             <style jsx>{`
                 @keyframes gradientMove {
                     0% {
@@ -140,9 +144,8 @@ export default function StudentsPage() {
                 </div>
                 <div className="flex items-center space-x-4">
                     <Link href="/">
-                        <button className="font-mono text-white px-4 py-1 rounded-full border border-white/20">
-                            <ArrowLeft className="w-4 h-4 mr-2 inline" />
-                            BACK
+                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white/10 transition-colors">
+                            ← BACK TO HOME
                         </button>
                     </Link>
                 </div>
@@ -166,7 +169,6 @@ export default function StudentsPage() {
                 {/* Search - removed view options */}
                 <div className="mb-10 max-w-md mx-auto">
                     <div className="relative mb-4">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50 w-4 h-4" />
                         <Input
                             type="text"
                             placeholder="Search students..."
@@ -175,8 +177,6 @@ export default function StudentsPage() {
                             className="bg-white/5 border-white/10 text-white pl-10 font-mono"
                         />
                     </div>
-
-                    {/* Removed Tabs component */}
                 </div>
 
                 {/* Students display - only grid view now */}
@@ -184,13 +184,13 @@ export default function StudentsPage() {
                     {filteredStudents.map((student) => (
                         <Card
                             key={student.id}
-                            className="bg-white/5 border-white/10 text-white hover:bg-white/10 transition-colors overflow-hidden relative"
+                            className="bg-white/5 border-white/10 text-white hover:bg-white/10 transition-colors overflow-hidden relative flex flex-col justify-between h-[300px]"
                         >
                             {/* Removed gradient line from individual cards */}
 
                             <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                                <Avatar className="h-12 w-12 border border-white/20">
-                                    <AvatarFallback className="bg-white/10 text-white font-mono">
+                                <Avatar className="h-10 w-10 border border-white/20">
+                                    <AvatarFallback className="bg-white/10 text-white font-mono text-sm">
                                         {student.name
                                             .split(" ")
                                             .map((n) => n[0])
@@ -198,37 +198,60 @@ export default function StudentsPage() {
                                     </AvatarFallback>
                                 </Avatar>
                                 <div>
-                                    <CardTitle className="font-mono text-lg">
+                                    <CardTitle className="font-mono text-base">
                                         {student.name}
                                     </CardTitle>
-                                    <CardDescription className="text-white/70 font-mono">
-                                        {student.course}, Year {student.year}
+                                    <CardDescription className="text-white/70 font-mono text-sm">
+                                        {student.course}
                                     </CardDescription>
                                 </div>
                             </CardHeader>
-                            <CardContent>
+                            <CardContent className="flex-grow">
                                 <div className="flex flex-wrap gap-2 mt-2">
-                                    {student.skills.map((skill) => (
-                                        <Badge
-                                            key={skill}
-                                            variant="secondary"
-                                            className="bg-white/10 text-white font-mono text-xs"
-                                        >
-                                            {skill}
-                                        </Badge>
-                                    ))}
+                                    {student.skills.map(
+                                        (skill, index) =>
+                                            index < 4 && (
+                                                <Badge
+                                                    key={skill}
+                                                    variant="secondary"
+                                                    className="bg-white/10 text-white font-mono text-xs"
+                                                >
+                                                    {skill}
+                                                </Badge>
+                                            )
+                                    )}
                                 </div>
                             </CardContent>
-                            <CardFooter className="flex justify-between">
-                                <span className="font-mono text-sm text-white/70">
-                                    Projects: {student.projects}
-                                </span>
-                                <Button
-                                    variant="ghost"
-                                    className="font-mono text-xs text-white/80 hover:text-white"
-                                >
-                                    VIEW PROFILE
-                                </Button>
+                            <CardFooter className="flex justify-between items-center border-t border-white/10 pt-4">
+                                <div></div>
+                                <div className="flex gap-3">
+                                    <Button
+                                        variant="ghost"
+                                        className="font-mono text-xs text-white/80 hover:text-black border border-white/20"
+                                        onClick={() =>
+                                            window.open(
+                                                student.linkedin,
+                                                "_blank"
+                                            )
+                                        }
+                                    >
+                                        <Linkedin className="h-3 w-3 mr-1" />{" "}
+                                        CONNECT
+                                    </Button>
+                                    <Button
+                                        variant="ghost"
+                                        className="font-mono text-xs text-white/80 hover:text-black border border-white/20"
+                                        onClick={() =>
+                                            window.open(
+                                                student.github,
+                                                "_blank"
+                                            )
+                                        }
+                                    >
+                                        <Github className="h-3 w-3 mr-1" />{" "}
+                                        PROFILE
+                                    </Button>
+                                </div>
                             </CardFooter>
                         </Card>
                     ))}

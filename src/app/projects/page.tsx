@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowLeft, Search, Filter } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Search, Github, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import {
     Card,
@@ -14,36 +13,44 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
-// Sample project data - would come from API/database in real app
 const projectsData = [
     {
         id: 1,
-        title: "AI Content Generator",
+        title: "E-Commerce Platform",
         description:
-            "A machine learning tool that creates personalized content based on user preferences.",
-        tech: ["React", "Python", "TensorFlow"],
+            "Sleek, interactive e-commerce platform selling Nike shoes with immersive animations, dynamic product visualization, and cutting-edge digital shopping experience.",
+        tech: ["React", "TailwindCSS", "Node.js", "MongoDB"],
+        github: "https://github.com/vereoman/ecommerce-follow-along",
+        website: "https://ecommerce-client-mauve.vercel.app",
     },
     {
         id: 2,
-        title: "Blockchain Voting System",
+        title: "Slowest Cafe Wi-Fi",
         description:
-            "Secure and transparent voting platform built on blockchain technology.",
-        tech: ["Solidity", "Ethereum", "Next.js"],
+            "Discover cafés with slow Wi-Fi! Our site tests and ranks local spots, helping you find the best places for reliable internet or avoid sluggish connections during visits.",
+        tech: ["React", "TailwindCSS", "Node.js", "MongoDB"],
+        github: "https://github.com/kalviumcommunity/S65_Slowest_Cafe_Wi-Fi",
+        website: "https://s65-slowest-cafe-wi-fi.vercel.app",
     },
     {
         id: 3,
-        title: "AR Campus Tour",
+        title: "PawPlay Video Platform",
         description:
-            "Augmented reality application for virtual campus exploration.",
-        tech: ["Unity", "ARKit", "C#"],
+            "PawPay lets users upload, share, and comment on hilarious animal videos. Connect with pet lovers and spread joy through amusing clips of furry companions worldwide!",
+        tech: ["React", "TailwindCSS", "Node.js", "MongoDB"],
+        github: "",
+        website: "",
     },
     {
         id: 4,
-        title: "Smart Health Monitor",
+        title: "Rant+ Online Chat App",
         description:
-            "IoT-based health monitoring system with real-time analytics.",
-        tech: ["Node.js", "MongoDB", "Arduino"],
+            "Chat instantly with friends and groups. Fast, secure, and simple real-time messaging with media sharing, emojis, and notifications—all in one easy-to-use, modern chat app.",
+        tech: ["React", "TailwindCSS", "Node.js", "MongoDB"],
+        github: "https://github.com/mohan-bee/Rant-plus",
+        website: "https://rant-plus.onrender.com",
     },
 ];
 
@@ -53,7 +60,6 @@ export default function ProjectsPage() {
     const [animationTriggered, setAnimationTriggered] = useState(false);
 
     useEffect(() => {
-        // Update time every second
         const updateTime = () => {
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, "0");
@@ -65,7 +71,6 @@ export default function ProjectsPage() {
         updateTime();
         const interval = setInterval(updateTime, 1000);
 
-        // Trigger animation after component mounts
         setTimeout(() => {
             setAnimationTriggered(true);
         }, 100);
@@ -97,7 +102,6 @@ export default function ProjectsPage() {
                 }}
             />
 
-            {/* Add this style block for the animation */}
             <style jsx>{`
                 @keyframes gradientMove {
                     0% {
@@ -118,9 +122,8 @@ export default function ProjectsPage() {
                 </div>
                 <div className="flex items-center space-x-4">
                     <Link href="/">
-                        <button className="font-mono text-white px-4 py-1 rounded-full border border-white/20">
-                            <ArrowLeft className="w-4 h-4 mr-2 inline" />
-                            BACK
+                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white/10 transition-colors">
+                            ← BACK TO HOME
                         </button>
                     </Link>
                 </div>
@@ -160,31 +163,62 @@ export default function ProjectsPage() {
                     {filteredProjects.map((project) => (
                         <Card
                             key={project.id}
-                            className="bg-white/5 border-white/10 text-white hover:bg-white/10 transition-colors"
+                            className="bg-white/5 border-white/10 text-white hover:bg-white/10 transition-colors h-[320px] flex flex-col"
                         >
-                            <CardHeader>
+                            <CardHeader className="pb-2">
                                 <div className="flex justify-between items-start">
-                                    <CardTitle className="font-mono text-xl">
+                                    <CardTitle className="font-mono text-xl mb-2">
                                         {project.title}
                                     </CardTitle>
                                 </div>
-                                <CardDescription className="text-white/70 font-mono">
+                                <CardDescription className="text-white/70 font-mono text-sm mt-4">
                                     {project.description}
                                 </CardDescription>
                             </CardHeader>
-                            <CardContent>
-                                <div className="flex flex-wrap gap-2 mt-2">
+                            <CardContent className="flex-grow">
+                                <div className="flex flex-wrap gap-2 mt-4">
                                     {project.tech.map((tech) => (
                                         <Badge
                                             key={tech}
                                             variant="secondary"
-                                            className="bg-white/10 text-white font-mono text-xs"
+                                            className="bg-white/10 text-white hover:text-black font-mono text-xs"
                                         >
                                             {tech}
                                         </Badge>
                                     ))}
                                 </div>
                             </CardContent>
+                            <CardFooter className="flex justify-between items-center border-t border-white/10 pt-4">
+                                <div></div>
+                                <div className="flex gap-3">
+                                    <Button
+                                        variant="ghost"
+                                        className="font-mono text-xs text-white/80 hover:text-black border border-white/20"
+                                        onClick={() =>
+                                            window.open(
+                                                project.github,
+                                                "_blank"
+                                            )
+                                        }
+                                    >
+                                        <Github className="h-3 w-3 mr-1" /> VIEW
+                                        PROJECT
+                                    </Button>
+                                    <Button
+                                        variant="ghost"
+                                        className="font-mono text-xs text-white/80 hover:text-black border border-white/20"
+                                        onClick={() =>
+                                            window.open(
+                                                project.website,
+                                                "_blank"
+                                            )
+                                        }
+                                    >
+                                        <ExternalLink className="h-3 w-3 mr-1" />{" "}
+                                        VISIT SITE
+                                    </Button>
+                                </div>
+                            </CardFooter>
                         </Card>
                     ))}
                 </div>

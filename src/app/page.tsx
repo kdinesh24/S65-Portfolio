@@ -6,8 +6,8 @@ export default function Home() {
     return (
         <main>
             <LandingPage />
-            <DesignerPortfolio />
             <TestimonialCarousel />
+            <DesignerPortfolio />
         </main>
     );
 }
