@@ -73,11 +73,11 @@ export default function MentorsPage() {
 
     return (
         <div className="relative w-full min-h-screen bg-black text-white overflow-hidden">
-            <div
+           <div
                 className="absolute top-0 left-0 w-full h-1 z-10"
                 style={{
                     background:
-                        "linear-gradient(90deg, #f87171, #a855f7, #3b82f6, #a855f7, #f87171)",
+                        "linear-gradient(90deg, #1c1c1c, #4d4d4d, #7f7f7f, #4d4d4d, #1c1c1c)",
                     backgroundSize: "200% 100%",
                     animation: "gradientMove 8s linear infinite",
                 }}

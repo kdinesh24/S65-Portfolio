@@ -11,7 +11,7 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
     {
         id: "t1",
-        quote: "",
+        quote: "I'm on the cutting edge of no-code tools that allow me to bring my creative visions to life. Though my methods may be unconventional, my dedication to the craft is unparalleled.",
         author: "ABHINAV RAHUL",
     },
     {
@@ -21,7 +21,7 @@ const testimonials: Testimonial[] = [
     },
     {
         id: "t3",
-        quote: "",
+        quote: "I'm on the cutting edge of no-code tools that allow me to bring my creative visions to life. Though my methods may be unconventional, my dedication to the craft is unparalleled.",
         author: "ANKIT KUMAR",
     },
     {
@@ -31,7 +31,7 @@ const testimonials: Testimonial[] = [
     },
     {
         id: "t5",
-        quote: "",
+        quote: "I'm on the cutting edge of no-code tools that allow me to bring my creative visions to life. Though my methods may be unconventional, my dedication to the craft is unparalleled.",
         author: "CHAITANYA PAWAR",
     },
     {
@@ -41,7 +41,7 @@ const testimonials: Testimonial[] = [
     },
     {
         id: "t7",
-        quote: "",
+        quote: "I'm on the cutting edge of no-code tools that allow me to bring my creative visions to life. Though my methods may be unconventional, my dedication to the craft is unparalleled.",
         author: "GR MONISH",
     },
     {

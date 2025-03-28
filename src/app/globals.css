@@ -6,6 +6,7 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 10, 10, 15;
     --background-end-rgb: 17, 17, 25;
+    --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
 }
 
 body {
@@ -93,12 +94,27 @@ body {
     }
 }
 
+@keyframes spotlight {
+    0% {
+        opacity: 0;
+        transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -40%) scale(1);
+    }
+}
+
 .animate-scroll {
-    animation: scroll 30s linear infinite;
+    animation: scroll 100s linear infinite;
 }
 
 .animate-scroll-reverse {
-    animation: scroll-reverse 30s linear infinite;
+    animation: scroll-reverse 100s linear infinite;
+}
+
+.animate-spotlight {
+    animation: var(--animate-spotlight);
 }
 
 @layer base {

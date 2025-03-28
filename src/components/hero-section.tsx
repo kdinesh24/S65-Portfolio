@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Spotlight } from "./ui/Spotlight";
 
 export default function LandingPage() {
     const [currentTime, setCurrentTime] = useState("");
@@ -32,7 +33,7 @@ export default function LandingPage() {
                 className="absolute top-0 left-0 w-full h-1 z-10"
                 style={{
                     background:
-                        "linear-gradient(90deg, #f87171, #a855f7, #3b82f6, #a855f7, #f87171)",
+                        "linear-gradient(90deg, #1c1c1c, #4d4d4d, #7f7f7f, #4d4d4d, #1c1c1c)",
                     backgroundSize: "200% 100%",
                     animation: "gradientMove 8s linear infinite",
                 }}
@@ -75,7 +76,12 @@ export default function LandingPage() {
                 </div>
             </header>
 
-            <main className="flex flex-col items-center justify-center h-[calc(100vh-200px)]">
+            <main className="relative flex flex-col items-center justify-center h-[calc(100vh-200px)]">
+                <Spotlight
+                    className="-top-40 left-0 md:-top-20 md:left-60"
+                    fill="white"
+                />
+                
                 <div className="flex items-center justify-center mb-8">
                     <div className="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
                     <span className="font-mono text-lg tracking-wider">
@@ -83,7 +89,7 @@ export default function LandingPage() {
                     </span>
                 </div>
 
-                <div className="text-center">
+                <div className="relative z-10 text-center">
                     <h1 className="font-mono text-9xl font-bold tracking-tighter mb-8">
                         KALVIUM-SQUAD-65
                     </h1>
