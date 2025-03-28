@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "./navbar";
 
 interface Project {
   id: string;
@@ -37,7 +36,7 @@ export default function MyProjects() {
         <div className="flex justify-between items-center mb-8">
           <div className="text-indigo-500 font-medium">My Work</div>
           <div className="absolute left-1/2 transform -translate-x-1/2 top-14 z-10">
-            <Navbar />
+
           </div>
         </div>
         
@@ -81,16 +80,6 @@ export default function MyProjects() {
           ))}
         </div>
         
-        <div className="fixed bottom-6 right-6">
-          <div className="bg-white text-black rounded-full px-4 py-2 flex items-center text-sm font-medium">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" />
-              <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Made in Framer
-          </div>
-        </div>
       </div>
     </div>
   );
