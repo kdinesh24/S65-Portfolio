@@ -11,28 +11,118 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
     {
         id: "t1",
-        quote: "DAVID'S WORK SPEAKS FOR ITSELF—METICULOUSLY CRAFTED, VISUALLY CAPTIVATING, AND SEAMLESSLY INTEGRATED WITH OUR BRAND'S ETHOS. THEY ARE A TRUE ASSET, CONSISTENTLY DELIVERS EXPERIENCE AND ENGAGEMENT.",
-        author: "MICHAEL VASIEN",
+        quote: "",
+        author: "ABHINAV RAHUL",
     },
     {
         id: "t2",
-        quote: "STRONGLY SUGGESTED! GUETABERT DAVIDSON EXCEEDED EXPECTATIONS. STRIKING WEBSITE AND ALSO OFFERED PRICELESS ADVICE FOR ENHANCING INTERNET VISIBILITY.",
-        author: "RICK O'CONNELL",
+        quote: "",
+        author: "AKSHIT SHARMA",
     },
     {
         id: "t3",
-        quote: "ENOUGH GOOD THINGS ABOUT. HAVE AN INCREDIBLE TRANSFORMING IDEAS INTO STUNNING DESIGNS.",
-        author: "MACKIE",
+        quote: "",
+        author: "ANKIT KUMAR",
     },
     {
         id: "t4",
-        quote: "PROFESSIONAL FROM START TO FINISH. THE SITE DESIGN CAPTURED EXACTLY WHAT WE WERE LOOKING FOR AND THE ONGOING SUPPORT HAS BEEN EXCEPTIONAL.",
-        author: "SARAH CHEN",
+        quote: "",
+        author: "ARMAN KAR",
     },
     {
         id: "t5",
-        quote: "WHAT IMPRESSED ME MOST WAS THE SPEED AND EFFICIENCY WITHOUT COMPROMISING ON QUALITY. THE PROJECT WAS DELIVERED AHEAD OF SCHEDULE WITH ALL REQUIREMENTS MET.",
-        author: "JAMES WATSON",
+        quote: "",
+        author: "CHAITANYA PAWAR",
+    },
+    {
+        id: "t6",
+        quote: "",
+        author: "GOURISH CHOUHAN",
+    },
+    {
+        id: "t7",
+        quote: "",
+        author: "GR MONISH",
+    },
+    {
+        id: "t8",
+        quote: "",
+        author: "HIMANSHU GUPTA",
+    },
+    {
+        id: "t9",
+        quote: "",
+        author: "HRITHIK VASANTHRAM",
+    },
+    {
+        id: "t10",
+        quote: "",
+        author: "K DINESH",
+    },
+    {
+        id: "t11",
+        quote: "",
+        author: "KISHORE J",
+    },
+    {
+        id: "t12",
+        quote: "",
+        author: "MANTENA NAGA SAI NITIN VARMA",
+    },
+    {
+        id: "t13",
+        quote: "",
+        author: "MOHANRAJ A",
+    },
+    {
+        id: "t14",
+        quote: "",
+        author: "NAVANEETH M",
+    },
+    {
+        id: "t15",
+        quote: "",
+        author: "NIKHIL PAGADALA",
+    },
+    {
+        id: "t16",
+        quote: "",
+        author: "NISHAT AYUB",
+    },
+    {
+        id: "t17",
+        quote: "",
+        author: "P PURUSHOTTAM NAIDU",
+    },
+    {
+        id: "t18",
+        quote: "",
+        author: "ROHIT KUMAR",
+    },
+    {
+        id: "t19",
+        quote: "",
+        author: "ROHITRAJ K.A",
+    },
+    {
+        id: "t20",
+        quote: "",
+        author: "SAJIN SAJI GEORGE",
+    },
+    {
+        id: "t21",
+        quote: "",
+        author: "SANJEEV M.S",
+    },
+    {
+        id: "t22",
+        quote: "",
+        author: "SHUBH NAWANI",
+    },
+    {
+        id: "t23",
+        quote: "",
+        author: "SUJAL BHATT",
     },
 ];
 
@@ -46,12 +136,6 @@ export default function TestimonialCarousel() {
 
     return (
         <div className="relative bg-black text-white font-mono py-32 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-20 text-center">
-                <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-3">
-                    SOMETHING ABOUT US
-                </h2>
-            </div>
-
             <div className="relative">
                 <div className="overflow-hidden">
                     {isClient && (

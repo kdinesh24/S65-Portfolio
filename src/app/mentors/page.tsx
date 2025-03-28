@@ -24,7 +24,7 @@ const mentorsData = [
         expertise: ["Creative Thinking", "Communication", "Management Skills"],
         experience: "1+ years",
         projects: "2",
-        avatar: "https://media.licdn.com/dms/image/v2/D4D03AQHojOkCJJDHEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1687773530884?e=1748476800&v=beta&t=Tek-50m1ep23jXOGoSzLV0LvgM43KGcu93533rzGBBA",
+        avatar: "/images/riza.jpg",
         linkedin: "https://www.linkedin.com/in/rizayeasmin",
         github: "https://github.com/codewithriza",
     },
@@ -35,7 +35,7 @@ const mentorsData = [
         expertise: ["Web Deveeopment", "Prompt Engineering", "Data Structures"],
         experience: "12+ years",
         projects: "100+",
-        avatar: "https://avatars.githubusercontent.com/u/115514170?v=4",
+        avatar: "/images/shashwat.jpg",
         linkedin: "https://www.linkedin.com/in/shashwat-mahendra-214598163",
         github: "https://github.com/Shashwat2104",
     },
@@ -97,12 +97,12 @@ export default function MentorsPage() {
             <header className="flex justify-between items-center p-6">
                 <div className="flex items-center space-x-4">
                     <span className="font-mono text-lg">
-                        LOCAL - {currentTime}
+                        LOCAL - <strong>{currentTime}</strong>
                     </span>
                 </div>
                 <div className="flex items-center space-x-4">
                     <Link href="/">
-                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white/10 transition-colors">
+                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white hover:text-black transition-colors">
                             ← BACK TO HOME
                         </button>
                     </Link>
@@ -119,7 +119,7 @@ export default function MentorsPage() {
 
                 <div className="text-center mb-16">
                     <h1 className="font-mono text-7xl font-bold tracking-tighter">
-                        THE-MENTORS
+                        OUR-MENTORS
                     </h1>
                 </div>
 
@@ -213,7 +213,7 @@ export default function MentorsPage() {
                                             )
                                         }
                                     >
-                                        <Linkedin className="h-4 w-4 mr-1" />
+                                        <Linkedin className="h-3 w-3 mr-1" />
                                         CONNECT
                                     </Button>
                                     <Button
@@ -223,7 +223,7 @@ export default function MentorsPage() {
                                             window.open(mentor.github, "_blank")
                                         }
                                     >
-                                        <Github className="h-4 w-4 mr-1" />
+                                        <Github className="h-3 w-3 mr-1" />
                                         PROFILE
                                     </Button>
                                 </div>

@@ -14,67 +14,192 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin } from "lucide-react";
+import { Search, Github, Linkedin } from "lucide-react";
 
 const studentsData = [
     {
         id: 1,
-        name: "Aisha Patel",
-        course: "Computer Science",
-        skills: ["React", "Node.js", "UI/UX", "JavaScript"],
+        name: "ABHINAV RAHUL",
+        skills: [],
         avatar: "",
-        github: "https://github.com/aishapatel",
-        linkedin: "https://linkedin.com/in/aishapatel",
+        github: "",
+        linkedin: "",
     },
     {
         id: 2,
-        name: "Dev Sharma",
-        course: "AI & Machine Learning",
-        skills: ["Python", "TensorFlow", "Data Analysis", "Machine Learning"],
+        name: "AKSHIT SHARMA",
+        skills: [],
         avatar: "",
-        github: "https://github.com/devsharma",
-        linkedin: "https://linkedin.com/in/devsharma",
+        github: "",
+        linkedin: "",
     },
     {
         id: 3,
-        name: "Priya Singh",
-        course: "Information Technology",
-        skills: ["JavaScript", "React", "Firebase", "Next.js"],
+        name: "ANKIT KUMAR",
+        skills: [],
         avatar: "",
-        github: "https://github.com/priyasingh",
-        linkedin: "https://linkedin.com/in/priyasingh",
+        github: "",
+        linkedin: "",
     },
     {
         id: 4,
-        name: "Raj Kumar",
-        course: "Software Engineering",
-        skills: ["Java", "Spring Boot", "MySQL", "REST APIs"],
+        name: "ARMAN KAR",
+        skills: [],
         avatar: "",
-        github: "https://github.com/rajkumar",
-        linkedin: "https://linkedin.com/in/rajkumar",
+        github: "",
+        linkedin: "",
     },
     {
         id: 5,
-        name: "Ananya Gupta",
-        course: "Data Science",
-        skills: ["Python", "R", "Tableau", "Data Visualization"],
+        name: "CHAITANYA PAWAR",
+        skills: [],
         avatar: "",
-        github: "https://github.com/ananyagupta",
-        linkedin: "https://linkedin.com/in/ananyagupta",
+        github: "",
+        linkedin: "",
     },
     {
         id: 6,
-        name: "Vikram Reddy",
-        course: "Cybersecurity",
-        skills: [
-            "Network Security",
-            "Ethical Hacking",
-            "Cryptography",
-            "Penetration Testing",
-        ],
+        name: "GOURISH CHOUHAN",
+        skills: [],
         avatar: "",
-        github: "https://github.com/vikramreddy",
-        linkedin: "https://linkedin.com/in/vikramreddy",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 7,
+        name: "GR MONISH",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 8,
+        name: "HIMANSHU GUPTA",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 9,
+        name: "HRITHIK VASANTHRAM",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 10,
+        name: "K DINESH",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 11,
+        name: "KISHORE J",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 12,
+        name: "MANTENA NAGA SAI NITIN VARMA",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 13,
+        name: "MOHANRAJ A",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 14,
+        name: "NAVANEETH M",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 15,
+        name: "NIKHIL PAGADALA",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 16,
+        name: "NISHAT AYUB",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 17,
+        name: "P PURUSHOTTAM NAIDU",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 18,
+        name: "ROHIT KUMAR",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 19,
+        name: "ROHITRAJ K.A",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 20,
+        name: "SAJIN SAJI GEORGE",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 21,
+        name: "SANJEEV M.S",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 22,
+        name: "SHUBH NAWANI",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
+    },
+    {
+        id: 23,
+        name: "SUJAL BHATT",
+        skills: [],
+        avatar: "",
+        github: "",
+        linkedin: "",
     },
 ];
 
@@ -105,7 +230,6 @@ export default function StudentsPage() {
     const filteredStudents = studentsData.filter(
         (student) =>
             student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            student.course.toLowerCase().includes(searchTerm.toLowerCase()) ||
             student.skills.some((skill) =>
                 skill.toLowerCase().includes(searchTerm.toLowerCase())
             )
@@ -137,12 +261,12 @@ export default function StudentsPage() {
             <header className="flex justify-between items-center p-6">
                 <div className="flex items-center space-x-4">
                     <span className="font-mono text-lg">
-                        LOCAL - {currentTime}
+                        LOCAL - <strong>{currentTime}</strong>
                     </span>
                 </div>
                 <div className="flex items-center space-x-4">
                     <Link href="/">
-                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white/10 transition-colors">
+                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white hover:text-black transition-colors">
                             ← BACK TO HOME
                         </button>
                     </Link>
@@ -159,12 +283,13 @@ export default function StudentsPage() {
 
                 <div className="text-center mb-16">
                     <h1 className="font-mono text-7xl font-bold tracking-tighter">
-                        THE-STUDENTS
+                        OUR-STUDENTS
                     </h1>
                 </div>
 
                 <div className="mb-10 max-w-md mx-auto">
                     <div className="relative mb-4">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50 w-4 h-4" />
                         <Input
                             type="text"
                             placeholder="Search students..."
@@ -194,9 +319,6 @@ export default function StudentsPage() {
                                     <CardTitle className="font-mono text-base">
                                         {student.name}
                                     </CardTitle>
-                                    <CardDescription className="text-white/70 font-mono text-sm">
-                                        {student.course}
-                                    </CardDescription>
                                 </div>
                             </CardHeader>
                             <CardContent className="flex-grow">
@@ -228,7 +350,7 @@ export default function StudentsPage() {
                                             )
                                         }
                                     >
-                                        <Linkedin className="h-3 w-3 mr-1" />{" "}
+                                        <Linkedin className="h-3 w-3 mr-1" />
                                         CONNECT
                                     </Button>
                                     <Button
@@ -241,7 +363,7 @@ export default function StudentsPage() {
                                             )
                                         }
                                     >
-                                        <Github className="h-3 w-3 mr-1" />{" "}
+                                        <Github className="h-3 w-3 mr-1" />
                                         PROFILE
                                     </Button>
                                 </div>

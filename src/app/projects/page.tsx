@@ -45,6 +45,15 @@ const projectsData = [
     },
     {
         id: 4,
+        title: "Recursive Portfolio",
+        description:
+            "Showcasing Kalvium Squad 65's talent! Explore impressive projects, connect with skilled developers, and witness the innovation born from this dynamic cohort.",
+        tech: ["Next.js", "TailwindCSS", "Shadcn-UI", "TypeScript"],
+        github: "https://github.com/kdinesh24/S65-Portfolio",
+        website: "",
+    },
+    {
+        id: 5,
         title: "Rant+ Online Chat App",
         description:
             "Chat instantly with friends and groups. Fast, secure, and simple real-time messaging with media sharing, emojis, and notifications—all in one easy-to-use, modern chat app.",
@@ -115,12 +124,12 @@ export default function ProjectsPage() {
             <header className="flex justify-between items-center p-6">
                 <div className="flex items-center space-x-4">
                     <span className="font-mono text-lg">
-                        LOCAL - {currentTime}
+                        LOCAL - <strong>{currentTime}</strong>
                     </span>
                 </div>
                 <div className="flex items-center space-x-4">
                     <Link href="/">
-                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white/10 transition-colors">
+                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white hover:text-black transition-colors">
                             ← BACK TO HOME
                         </button>
                     </Link>
@@ -137,7 +146,7 @@ export default function ProjectsPage() {
 
                 <div className="text-center mb-16">
                     <h1 className="font-mono text-7xl font-bold tracking-tighter">
-                        THE-PROJECTS
+                        OUR-PROJECTS
                     </h1>
                 </div>
 

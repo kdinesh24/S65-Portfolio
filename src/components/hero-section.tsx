@@ -52,22 +52,23 @@ export default function LandingPage() {
             <header className="flex justify-between items-center p-6">
                 <div className="flex items-center space-x-4">
                     <span className="font-mono text-lg">
-                        LOCAL - {currentTime}
+                        LOCAL - <strong>{currentTime}</strong>
                     </span>
                 </div>
+
                 <div className="flex items-center space-x-4">
                     <Link href="/projects">
-                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white/10 transition-colors">
+                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white hover:text-black transition-colors">
                             PROJECTS
                         </button>
                     </Link>
                     <Link href="/students">
-                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white/10 transition-colors">
+                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white hover:text-black transition-colors">
                             STUDENTS
                         </button>
                     </Link>
                     <Link href="/mentors">
-                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white/10 transition-colors">
+                        <button className="font-mono text-white px-4 py-1 rounded-full hover:bg-white hover:text-black transition-colors">
                             MENTORS
                         </button>
                     </Link>
@@ -84,7 +85,7 @@ export default function LandingPage() {
 
                 <div className="text-center">
                     <h1 className="font-mono text-9xl font-bold tracking-tighter mb-8">
-                        SQUAD-65
+                        KALVIUM-SQUAD-65
                     </h1>
                     <p className="font-mono text-lg mt-2">
                         CRAFTED TO PROVE WE KNOW WHAT WE'RE DOING. A LITTLE FLEX{" "}
@@ -94,12 +95,12 @@ export default function LandingPage() {
                 </div>
             </main>
 
-            <footer className="absolute bottom-0 left-0 right-0 p-6 flex justify-between items-center">
+            {/* <footer className="absolute bottom-0 left-0 right-0 p-6 flex justify-between items-center">
                 <div className="font-mono">BASED IN LPU, JALANDHAR</div>
                 <div className="font-mono">
                     //DIGITAL DESIGNER + FRAMER DEVELOPER
                 </div>
-            </footer>
+            </footer> */}
         </div>
     );
 }
