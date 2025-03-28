@@ -81,7 +81,7 @@ export default function LandingPage() {
                     className="-top-40 left-0 md:-top-20 md:left-60"
                     fill="white"
                 />
-                
+
                 <div className="flex items-center justify-center mb-8">
                     <div className="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
                     <span className="font-mono text-lg tracking-wider">

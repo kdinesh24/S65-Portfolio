@@ -73,7 +73,7 @@ export default function MentorsPage() {
 
     return (
         <div className="relative w-full min-h-screen bg-black text-white overflow-hidden">
-           <div
+            <div
                 className="absolute top-0 left-0 w-full h-1 z-10"
                 style={{
                     background:
