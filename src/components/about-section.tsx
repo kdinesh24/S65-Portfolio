@@ -12,7 +12,6 @@ export default function DesignerPortfolio() {
 
     return (
         <div className="bg-black text-white font-mono">
-            {/* About Section */}
             <section id="about" className="py-12 px-4 md:px-24 relative">
                 <div className="max-w-3xl mx-auto text-center">
                     <h2 className="text-6xl font-bold mb-12">

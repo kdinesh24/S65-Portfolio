@@ -113,7 +113,6 @@ export default function StudentsPage() {
 
     return (
         <div className="relative w-full min-h-screen bg-black text-white overflow-hidden">
-            {/* Animated gradient line */}
             <div
                 className="absolute top-0 left-0 w-full h-1 z-10"
                 style={{
@@ -135,7 +134,6 @@ export default function StudentsPage() {
                 }
             `}</style>
 
-            {/* Header */}
             <header className="flex justify-between items-center p-6">
                 <div className="flex items-center space-x-4">
                     <span className="font-mono text-lg">
@@ -151,8 +149,7 @@ export default function StudentsPage() {
                 </div>
             </header>
 
-            {/* Main Content */}
-            <main className="container mx-auto px-6 py-8">
+            <main className="container mx-auto px-6 py-2">
                 <div className="flex items-center justify-center mb-8">
                     <div className="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
                     <span className="font-mono text-lg tracking-wider">
@@ -162,11 +159,10 @@ export default function StudentsPage() {
 
                 <div className="text-center mb-16">
                     <h1 className="font-mono text-7xl font-bold tracking-tighter">
-                        STUDENTS-ROSTER
+                        THE-STUDENTS
                     </h1>
                 </div>
 
-                {/* Search - removed view options */}
                 <div className="mb-10 max-w-md mx-auto">
                     <div className="relative mb-4">
                         <Input
@@ -179,15 +175,12 @@ export default function StudentsPage() {
                     </div>
                 </div>
 
-                {/* Students display - only grid view now */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {filteredStudents.map((student) => (
                         <Card
                             key={student.id}
                             className="bg-white/5 border-white/10 text-white hover:bg-white/10 transition-colors overflow-hidden relative flex flex-col justify-between h-[300px]"
                         >
-                            {/* Removed gradient line from individual cards */}
-
                             <CardHeader className="flex flex-row items-center gap-4 pb-2">
                                 <Avatar className="h-10 w-10 border border-white/20">
                                     <AvatarFallback className="bg-white/10 text-white font-mono text-sm">
@@ -214,7 +207,7 @@ export default function StudentsPage() {
                                                 <Badge
                                                     key={skill}
                                                     variant="secondary"
-                                                    className="bg-white/10 text-white font-mono text-xs"
+                                                    className="bg-white/10 text-white hover:bg-white hover:text-black font-mono text-xs"
                                                 >
                                                     {skill}
                                                 </Badge>
@@ -258,7 +251,6 @@ export default function StudentsPage() {
                 </div>
             </main>
 
-            {/* Footer */}
             <footer className="p-6 flex justify-between items-center border-t border-white/10 mt-20">
                 <div className="font-mono">BASED IN LPU, JALANDHAR</div>
                 <div className="font-mono">

@@ -46,14 +46,12 @@ export default function TestimonialCarousel() {
 
     return (
         <div className="relative bg-black text-white font-mono py-32 overflow-hidden">
-            {/* Section title */}
             <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-20 text-center">
                 <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-3">
                     SOMETHING ABOUT US
                 </h2>
             </div>
 
-            {/* Single row testimonial carousel */}
             <div className="relative">
                 <div className="overflow-hidden">
                     {isClient && (
@@ -64,7 +62,6 @@ export default function TestimonialCarousel() {
                                 width: `${testimonials.length * 450 * 2}px`,
                             }}
                         >
-                            {/* First set of cards */}
                             {testimonials.map((item) => (
                                 <TestimonialCard
                                     key={item.id}
@@ -72,7 +69,6 @@ export default function TestimonialCarousel() {
                                 />
                             ))}
 
-                            {/* Duplicate set for continuous scrolling */}
                             {testimonials.map((item) => (
                                 <TestimonialCard
                                     key={`${item.id}-dup`}
@@ -91,12 +87,10 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
     return (
         <div className="bg-black rounded-2xl p-6 min-w-[400px] max-w-[400px] flex flex-col relative">
             <div className="bg-black rounded-2xl h-full">
-                {/* Quote */}
                 <div className="text-white font-mono text-base mb-6 flex-grow">
                     "{testimonial.quote}"
                 </div>
 
-                {/* Author info */}
                 <div className="flex items-center mt-4">
                     <div>
                         <div className="text-white font-mono font-semibold">
