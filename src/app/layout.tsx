@@ -1,6 +1,7 @@
 import './globals.css'
 import React, { ReactNode } from 'react'
 import MyProjects from './components/my-projects'
+import LandingPage from './components/landing-page'
 
 interface RootLayoutProps {
   children: ReactNode
@@ -10,8 +11,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body>
-
+        
         <main>
+        <LandingPage />
           <MyProjects />
           {children}
         </main>
