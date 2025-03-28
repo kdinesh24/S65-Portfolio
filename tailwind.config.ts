@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
     darkMode: ["class"],
     content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -58,8 +59,25 @@ module.exports = {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
+  		},
+  		animation: {
+  			'scroll': 'scroll 30s linear infinite',
+  			'scroll-slow': 'scroll 80s linear infinite',
+  			'scroll-reverse': 'scroll-reverse 30s linear infinite',
+  		},
+  		keyframes: {
+  			scroll: {
+  				'0%': { transform: 'translateX(0)' },
+  				'100%': { transform: 'translateX(-50%)' },
+  			},
+  			'scroll-reverse': {
+  				'0%': { transform: 'translateX(-50%)' },
+  				'100%': { transform: 'translateX(0)' },
+  			}
   		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
-} 
+}
+
+export default config;
