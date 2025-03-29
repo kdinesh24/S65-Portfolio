@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { StarsBackground } from "./ui/stars-background";
+import { ShootingStars } from "./ui/shooting-stars";
 
 interface Testimonial {
     id: string;
@@ -136,6 +138,10 @@ export default function TestimonialCarousel() {
 
     return (
         <div className="relative bg-black text-white font-mono py-32 overflow-hidden">
+            {/* Stars background and shooting stars */}
+            <StarsBackground starDensity={0.0002} />
+            <ShootingStars />
+            
             <div className="relative">
                 <div className="overflow-hidden">
                     {isClient && (

@@ -2,17 +2,17 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
     Card,
     CardContent,
-    CardDescription,
     CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Search, Github, Linkedin } from "lucide-react";
 
@@ -20,186 +20,194 @@ const studentsData = [
     {
         id: 1,
         name: "ABHINAV RAHUL",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        skills: ["Python", "React", "Node.js", "Express.js"],
+        avatar: "/images/rahul.jpg",
+        github: "https://github.com/Rahul-Abhinav1707",
+        linkedin: "https://www.linkedin.com/in/abhinav-rahul-41735831b",
     },
     {
         id: 2,
         name: "AKSHIT SHARMA",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        skills: ["Python", "C++", "React", "Node.js"],
+        avatar: "/images/akshit.jpg",
+        github: "https://github.com/axceee",
+        linkedin: "https://www.linkedin.com/in/akshit-sharma-05b610339",
     },
     {
         id: 3,
         name: "ANKIT KUMAR",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        skills: ["C", "C++", "React", "JavaScript"],
+        avatar: "/images/ankit.jpg",
+        github: "https://github.com/Ankitkr000",
+        linkedin: "https://www.linkedin.com/in/ankit-kumar-1124a9286",
     },
     {
         id: 4,
         name: "ARMAN KAR",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        skills: ["Python", "Next.js", "TypeScript", "MySQL"],
+        avatar: "/images/arman.jpg",
+        github: "https://github.com/vereoman",
+        linkedin: "https://www.linkedin.com/in/vereoman",
     },
     {
         id: 5,
         name: "CHAITANYA PAWAR",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        skills: ["Python", "Java", "React"],
+        avatar: "/images/chaitanya.jpg",
+        github: "https://github.com/chazpawar",
+        linkedin: "https://www.linkedin.com/in/chaitanya-pawar-675306329",
     },
     {
         id: 6,
         name: "GOURISH CHOUHAN",
         skills: [],
-        avatar: "",
-        github: "",
+        avatar: "/images/gourish.jpg",
+        github: "https://github.com/gourishchouhan",
         linkedin: "",
     },
     {
         id: 7,
         name: "GR MONISH",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        skills: ["React"],
+        avatar: "/images/monish.jpg",
+        github: "https://github.com/Monish892",
+        linkedin: "http://www.linkedin.com/in/gr-monish-291006359",
     },
     {
         id: 8,
-        name: "HIMANSHU GUPTA",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        name: "HEMASRI GUTHULA",
+        skills: ["Python", "Node.js", "Express.js", "MongoDB"],
+        avatar: "/images/hemasri.jpg",
+        github: "https://www.linkedin.com/in/hemasri-guthula-56a791325",
+        linkedin: "https://www.linkedin.com/in/hemasri-guthula-56a791325",
     },
     {
         id: 9,
-        name: "HRITHIK VASANTHRAM",
+        name: "HIMANSHU GUPTA",
         skills: [],
-        avatar: "",
-        github: "",
+        avatar: "/images/himanshu.jpg",
+        github: "https://github.com/itzzhimanshugt",
         linkedin: "",
     },
     {
         id: 10,
-        name: "K DINESH",
+        name: "HRITHIK VASANTHRAM",
         skills: [],
-        avatar: "",
+        avatar: "/images/hrithik.jpg",
         github: "",
         linkedin: "",
     },
     {
         id: 11,
-        name: "KISHORE J",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        name: "K DINESH",
+        skills: ["Python", "Next.js", "TypeScript", "MySQL"],
+        avatar: "/images/dinesh.jpg",
+        github: "https://github.com/kdinesh24",
+        linkedin: "https://www.linkedin.com/in/kdinesh24/",
     },
     {
         id: 12,
-        name: "MANTENA NAGA SAI NITIN VARMA",
+        name: "KISHORE J",
         skills: [],
-        avatar: "",
+        avatar: "/images/kishore.jpg",
         github: "",
         linkedin: "",
     },
     {
         id: 13,
-        name: "MOHANRAJ A",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        name: "MANTENA NAGA SAI NITIN VARMA",
+        skills: ["Python", "C++", "React", "Node.js"],
+        avatar: "/images/nithin.jpg",
+        github: "https://github.com/nithinvarma411",
+        linkedin: "https://www.linkedin.com/in/nithin-varma-58a605326",
     },
     {
         id: 14,
-        name: "NAVANEETH M",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        name: "MOHANRAJ A",
+        skills: ["Python", "C++", "React", "Node.js"],
+        avatar: "/images/mohanraj.jpg",
+        github: "https://github.com/mohan-bee",
+        linkedin: "https://www.linkedin.com/in/mohan-a-88b655318",
     },
     {
         id: 15,
-        name: "NIKHIL PAGADALA",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        name: "NAVANEETH M",
+        skills: ["Python", "C++", "React", "JavaScript"],
+        avatar: "/images/navaneeth.jpg",
+        github: "https://github.com/NavaneethKSD",
+        linkedin: "http://www.linkedin.com/in/navaneeth-m-m-b26337320",
     },
     {
         id: 16,
-        name: "NISHAT AYUB",
+        name: "NIKHIL PAGADALA",
         skills: [],
-        avatar: "",
+        avatar: "/images/nikhil.jpg",
         github: "",
         linkedin: "",
     },
     {
         id: 17,
-        name: "P PURUSHOTTAM NAIDU",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        name: "NISHAT AYUB",
+        skills: ["Python", "C++", "Java", "React"],
+        avatar: "/images/nishat.jpg",
+        github: "https://github.com/nishatayub",
+        linkedin: "https://www.linkedin.com/in/nishat-ayub-a931a330b",
     },
     {
         id: 18,
-        name: "ROHIT KUMAR",
+        name: "P PURUSHOTTAM NAIDU",
         skills: [],
-        avatar: "",
+        avatar: "/images/purushottam.jpg",
         github: "",
         linkedin: "",
     },
     {
         id: 19,
-        name: "ROHITRAJ K.A",
+        name: "ROHIT KUMAR",
         skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        avatar: "/images/rohit.jpg",
+        github: "https://github.com/itisrohit",
+        linkedin: "https://www.linkedin.com/in/ayorohit/",
     },
     {
         id: 20,
-        name: "SAJIN SAJI GEORGE",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        name: "ROHITRAJ K.A",
+        skills: ["Python", "C++", "Java", "React"],
+        avatar: "/images/rohitraj.jpg",
+        github: "https://github.com/rohit-xo21",
+        linkedin: "https://www.linkedin.com/in/rohithraj-k-a-96a011320",
     },
     {
         id: 21,
-        name: "SANJEEV M.S",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        name: "SAJIN SAJI GEORGE",
+        skills: ["C++", "Python", "React"],
+        avatar: "/images/sajin.jpg",
+        github: "https://github.com/ArKQuee",
+        linkedin: "http://www.linkedin.com/in/sajin-saji-george-732975320",
     },
     {
         id: 22,
-        name: "SHUBH NAWANI",
+        name: "SANJEEV M.S",
         skills: [],
-        avatar: "",
+        avatar: "/images/sanjeev.jpg",
         github: "",
         linkedin: "",
     },
     {
         id: 23,
+        name: "SHUBH NAWANI",
+        skills: ["Python", "Java", "React", "Node.js"],
+        avatar: "/images/nawani.jpg",
+        github: "https://github.com/Shubh-Nawani",
+        linkedin: "https://www.linkedin.com/in/shubhnawani",
+    },
+    {
+        id: 24,
         name: "SUJAL BHATT",
-        skills: [],
-        avatar: "",
-        github: "",
-        linkedin: "",
+        skills: ["Python", "Node.js", "Express.js", "MongoDB"],
+        avatar: "/images/sujal.jpg",
+        github: "https://github.com/SujalBhatt",
+        linkedin: "https://www.linkedin.com/in/sujal-bhatt-168020306",
     },
 ];
 
@@ -207,6 +215,7 @@ export default function StudentsPage() {
     const [currentTime, setCurrentTime] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
     const [animationTriggered, setAnimationTriggered] = useState(false);
+    const [imageError, setImageError] = useState<Record<number, boolean>>({});
 
     useEffect(() => {
         const updateTime = () => {
@@ -234,6 +243,14 @@ export default function StudentsPage() {
                 skill.toLowerCase().includes(searchTerm.toLowerCase())
             )
     );
+
+    // Handle image error
+    const handleImageError = (studentId: number) => {
+        setImageError(prev => ({
+            ...prev,
+            [studentId]: true
+        }));
+    };
 
     return (
         <div className="relative w-full min-h-screen bg-black text-white overflow-hidden">
@@ -308,6 +325,13 @@ export default function StudentsPage() {
                         >
                             <CardHeader className="flex flex-row items-center gap-4 pb-2">
                                 <Avatar className="h-10 w-10 border border-white/20">
+                                    {!imageError[student.id] ? (
+                                        <AvatarImage 
+                                            src={student.avatar} 
+                                            alt={student.name}
+                                            onError={() => handleImageError(student.id)}
+                                        />
+                                    ) : null}
                                     <AvatarFallback className="bg-white/10 text-white font-mono text-sm">
                                         {student.name
                                             .split(" ")
@@ -340,32 +364,36 @@ export default function StudentsPage() {
                             <CardFooter className="flex justify-between items-center border-t border-white/10 pt-4">
                                 <div></div>
                                 <div className="flex gap-3">
-                                    <Button
-                                        variant="ghost"
-                                        className="font-mono text-xs text-white/80 hover:text-black border border-white/20"
-                                        onClick={() =>
-                                            window.open(
-                                                student.linkedin,
-                                                "_blank"
-                                            )
-                                        }
-                                    >
-                                        <Linkedin className="h-3 w-3 mr-1" />
-                                        CONNECT
-                                    </Button>
-                                    <Button
-                                        variant="ghost"
-                                        className="font-mono text-xs text-white/80 hover:text-black border border-white/20"
-                                        onClick={() =>
-                                            window.open(
-                                                student.github,
-                                                "_blank"
-                                            )
-                                        }
-                                    >
-                                        <Github className="h-3 w-3 mr-1" />
-                                        PROFILE
-                                    </Button>
+                                    {student.linkedin && (
+                                        <Button
+                                            variant="ghost"
+                                            className="font-mono text-xs text-white/80 hover:text-black border border-white/20"
+                                            onClick={() =>
+                                                window.open(
+                                                    student.linkedin,
+                                                    "_blank"
+                                                )
+                                            }
+                                        >
+                                            <Linkedin className="h-3 w-3 mr-1" />
+                                            CONNECT
+                                        </Button>
+                                    )}
+                                    {student.github && (
+                                        <Button
+                                            variant="ghost"
+                                            className="font-mono text-xs text-white/80 hover:text-black border border-white/20"
+                                            onClick={() =>
+                                                window.open(
+                                                    student.github,
+                                                    "_blank"
+                                                )
+                                            }
+                                        >
+                                            <Github className="h-3 w-3 mr-1" />
+                                            PROFILE
+                                        </Button>
+                                    )}
                                 </div>
                             </CardFooter>
                         </Card>
