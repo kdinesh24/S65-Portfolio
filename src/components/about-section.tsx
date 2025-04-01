@@ -105,7 +105,7 @@ const itemVariants = {
 export function AboutSection() {
     return (
         <Card className="font-mono w-full max-w-3xl mx-auto my-10 bg-transparent text-white border border-white/10 shadow-lg rounded-md">
-            <CardHeader className="text-center pb-2">
+            <CardHeader className="text-center pb-2 bg-transparent">
                 <CardTitle className="text-2xl font-normal text-white tracking-wider">
                     SQUAD-65
                 </CardTitle>
@@ -113,7 +113,7 @@ export function AboutSection() {
                     Hover over any section below to explore
                 </CardDescription>
             </CardHeader>
-            <CardContent className="p-4 md:p-6">
+            <CardContent className="p-4 md:p-6 bg-transparent">
                 <motion.div
                     className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4"
                     variants={containerVariants}
@@ -139,7 +139,7 @@ export function AboutSection() {
                                 </motion.div>
                             </HoverCardTrigger>
                             <HoverCardContent
-                                className="w-96 z-50 bg-black border border-white/10 text-white rounded-md shadow-md font-mono"
+                                className="w-96 z-50 bg-black/80 backdrop-blur-sm border border-white/10 text-white rounded-md shadow-md font-mono"
                                 side="top"
                                 align="center"
                             >
