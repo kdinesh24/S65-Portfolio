@@ -6,8 +6,8 @@
 
 Kalvium-Squad-65 is a dynamic portfolio showcasing the projects, students, and mentors associated with our developer cohort. Based in LPU, Jalandhar, our platform highlights innovative projects and connects talented developers with the tech community.
 
-Check out our repository on GitHub for the source code and contribution guidelines: [GitHub Repository](https://github.com/Kalvium-Squad-65).  
-View the live deployment of our portfolio here: [Live Deployment](https://kalvium-squad65.vercel.app).
+Check out our repository on GitHub for the source code and contribution guidelines: [GitHub Repository](https://github.com/kdinesh24/S65-Portfolio).  
+View the live deployment of our portfolio here: [Live Deployment](https://s65-portfolio.vercel.app).
 
 ## ✨ Features
 
@@ -50,5 +50,5 @@ This portfolio is built with:
 
 ## 🔗 Links
 
-- **GitHub Repository**: [https://github.com/Kalvium-Squad-65](https://github.com/Kalvium-Squad-65)
-- **Live Deployment**: [https://kalvium-squad65.vercel.app](https://kalvium-squad65.vercel.app)
+- **GitHub Repository**: [https://github.com/Kalvium-Squad-65](https://github.com/kdinesh24/S65-Portfolio)
+- **Live Deployment**: [https://kalvium-squad65.vercel.app](https://s65-portfolio.vercel.app)
