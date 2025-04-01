@@ -69,9 +69,9 @@ const projectsData = [
             "Chat instantly with friends and groups. Fast, secure, and simple real-time messaging with media sharing, emojis, and notifications—all in one easy-to-use, modern chat app.",
         tech: ["React", "TailwindCSS", "Node.js", "MongoDB"],
         github: "https://github.com/kdinesh24/Ecommerce-Follow-Along.git",
-        website: "https://frontend-e-commerce-nine.vercel.app/ecommerce-follow-along",
-
-    }
+        website:
+            "https://frontend-e-commerce-nine.vercel.app/ecommerce-follow-along",
+    },
 ];
 
 export default function ProjectsPage() {
@@ -113,7 +113,7 @@ export default function ProjectsPage() {
     // Animation variants
     const fadeIn = {
         hidden: { opacity: 0 },
-        visible: { opacity: 1 }
+        visible: { opacity: 1 },
     };
 
     const staggerContainer = {
@@ -121,9 +121,9 @@ export default function ProjectsPage() {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1
-            }
-        }
+                staggerChildren: 0.1,
+            },
+        },
     };
 
     return (
@@ -149,7 +149,7 @@ export default function ProjectsPage() {
                 }
             `}</style>
 
-            <motion.header 
+            <motion.header
                 className="flex justify-between items-center p-6"
                 initial="hidden"
                 animate={isLoaded ? "visible" : "hidden"}
@@ -170,14 +170,14 @@ export default function ProjectsPage() {
                 </div>
             </motion.header>
 
-            <motion.main 
+            <motion.main
                 className="container mx-auto px-6 py-2"
                 initial="hidden"
                 animate={isLoaded ? "visible" : "hidden"}
                 variants={fadeIn}
                 transition={{ duration: 0.8, delay: 0.2 }}
             >
-                <motion.div 
+                <motion.div
                     className="flex items-center justify-center mb-8"
                     variants={fadeIn}
                     transition={{ duration: 0.6, delay: 0.3 }}
@@ -188,7 +188,7 @@ export default function ProjectsPage() {
                     </span>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     className="text-center mb-16"
                     variants={fadeIn}
                     transition={{ duration: 0.6, delay: 0.4 }}
@@ -198,7 +198,7 @@ export default function ProjectsPage() {
                     </h1>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     className="mb-10 max-w-md mx-auto"
                     variants={fadeIn}
                     transition={{ duration: 0.6, delay: 0.5 }}
@@ -215,17 +215,19 @@ export default function ProjectsPage() {
                     </div>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 gap-6"
                     variants={staggerContainer}
                     initial="hidden"
                     animate={isLoaded ? "visible" : "hidden"}
                 >
                     {filteredProjects.map((project) => (
-                        <motion.div key={project.id} variants={fadeIn} transition={{ duration: 0.6 }}>
-                            <Card
-                                className="bg-white/5 border-white/10 text-white hover:bg-white/10 transition-colors h-[320px] flex flex-col"
-                            >
+                        <motion.div
+                            key={project.id}
+                            variants={fadeIn}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <Card className="bg-white/5 border-white/10 text-white hover:bg-white/10 transition-colors h-[320px] flex flex-col">
                                 <CardHeader className="pb-2">
                                     <div className="flex justify-between items-start">
                                         <CardTitle className="font-mono text-xl mb-2">
@@ -263,8 +265,8 @@ export default function ProjectsPage() {
                                                     )
                                                 }
                                             >
-                                                <Github className="h-3 w-3 mr-1" /> VIEW
-                                                PROJECT
+                                                <Github className="h-3 w-3 mr-1" />{" "}
+                                                VIEW PROJECT
                                             </Button>
                                         )}
                                         {project.website && (
@@ -288,29 +290,47 @@ export default function ProjectsPage() {
                         </motion.div>
                     ))}
                     {filteredProjects.length === 0 && searchTerm && (
-                        <motion.div 
+                        <motion.div
                             className="md:col-span-2 text-center py-10"
                             variants={fadeIn}
                         >
-                            <p className="font-mono text-white/70">No projects found matching "{searchTerm}".</p>
+                            <p className="font-mono text-white/70">
+                                No projects found matching "{searchTerm}".
+                            </p>
                         </motion.div>
                     )}
                 </motion.div>
             </motion.main>
 
-            <motion.footer 
+            <motion.footer
                 className="p-6 flex flex-col justify-center items-center border-t border-white/10 mt-20"
                 initial="hidden"
                 animate={isLoaded ? "visible" : "hidden"}
                 variants={fadeIn}
                 transition={{ duration: 0.6, delay: 0.7 }}
             >
-                <div className="font-mono text-center mb-2">BASED IN LPU, JALANDHAR</div>
+                <div className="font-mono text-center mb-2">
+                    BASED IN LPU, JALANDHAR
+                </div>
                 <div className="font-mono text-center">
                     DESIGNED AND DEVELOPED BY{" "}
-                    <a href="https://github.com/vereoman" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-400">@VEREOMAN</a>
-                    {" "}/{" "}
-                    <a href="https://github.com/kdinesh" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-400">@KDINESH</a>
+                    <a
+                        href="https://github.com/vereoman"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-400"
+                    >
+                        @VEREOMAN
+                    </a>{" "}
+                    /{" "}
+                    <a
+                        href="https://github.com/kdinesh24"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-400"
+                    >
+                        @KDINESH24
+                    </a>
                 </div>
             </motion.footer>
         </div>

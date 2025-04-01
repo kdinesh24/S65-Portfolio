@@ -35,19 +35,19 @@ const mentorsData = [
         avatar: "/images/riza.jpg", // Make sure this path is correct in your public folder
         linkedin: "https://www.linkedin.com/in/rizayeasmin",
         github: "https://github.com/codewithriza",
-        description: "Experienced Program Manager skilled in leading cross-functional teams, fostering creative thinking, and driving project success through effective communication.", // Description for hover card
+        description: "Program Manager specializing in team leadership, creative solutions, and effective project communication.",
     },
     {
         id: 2,
         name: "Shashwat Mahendra",
         title: "Technical Mentor",
         expertise: ["Web Development", "Prompt Engineering", "Data Structures"],
-        experience: "12+ years",
+        experience: "8+ years",
         projects: "100+",
         avatar: "/images/shashwat.jpg", // Make sure this path is correct in your public folder
         linkedin: "https://www.linkedin.com/in/shashwat-mahendra-214598163",
         github: "https://github.com/Shashwat2104",
-        description: "Veteran Technical Mentor with over a decade of experience, specializing in full-stack web development, prompt engineering, advanced data structures, and guiding aspiring developers.", // Description for hover card
+        description: "Seasoned technical mentor with expertise in full-stack development, prompt engineering, and data structures.",
     },
     // Add more mentors here with 'description' fields
 ];
@@ -64,23 +64,31 @@ export default function MentorsPage() {
             const now = new Date();
             // Using options for IST based on current date context (April 1, 2025)
             // Note: Relies on browser's Intl support and correct timezone data.
-            const options = { timeZone: 'Asia/Kolkata', hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit" };
+            const options = {
+                timeZone: "Asia/Kolkata",
+                hour12: false,
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+            };
             try {
-                 // Displaying time for India (IST)
-                 setCurrentTime(new Intl.DateTimeFormat('en-GB', {
-                     timeZone: 'Asia/Kolkata',
-                     hour12: false,
-                     hour: "2-digit",
-                     minute: "2-digit",
-                     second: "2-digit"
-                 }).format(now));
+                // Displaying time for India (IST)
+                setCurrentTime(
+                    new Intl.DateTimeFormat("en-GB", {
+                        timeZone: "Asia/Kolkata",
+                        hour12: false,
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        second: "2-digit",
+                    }).format(now)
+                );
             } catch (e) {
-                 // Fallback to local time if Intl fails
-                 const hours = String(now.getHours()).padStart(2, "0");
-                 const minutes = String(now.getMinutes()).padStart(2, "0");
-                 const seconds = String(now.getSeconds()).padStart(2, "0");
-                 setCurrentTime(`${hours}:${minutes}:${seconds} (Local)`);
-                 console.error("Intl formatting failed, using local time:", e);
+                // Fallback to local time if Intl fails
+                const hours = String(now.getHours()).padStart(2, "0");
+                const minutes = String(now.getMinutes()).padStart(2, "0");
+                const seconds = String(now.getSeconds()).padStart(2, "0");
+                setCurrentTime(`${hours}:${minutes}:${seconds} (Local)`);
+                console.error("Intl formatting failed, using local time:", e);
             }
         };
 
@@ -95,7 +103,7 @@ export default function MentorsPage() {
         // Cleanup interval on component unmount
         return () => {
             clearInterval(interval);
-        }
+        };
     }, []); // Empty dependency array ensures this runs only once on mount
 
     // Filter mentors based on search term (name or title)
@@ -108,7 +116,7 @@ export default function MentorsPage() {
     // Animation variants
     const fadeIn = {
         hidden: { opacity: 0 },
-        visible: { opacity: 1 }
+        visible: { opacity: 1 },
     };
 
     const staggerContainer = {
@@ -116,13 +124,15 @@ export default function MentorsPage() {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1
-            }
-        }
+                staggerChildren: 0.1,
+            },
+        },
     };
 
     return (
-        <div className="relative w-full min-h-screen bg-black text-white overflow-x-hidden"> {/* Prevent horizontal scroll */}
+        <div className="relative w-full min-h-screen bg-black text-white overflow-x-hidden">
+            {" "}
+            {/* Prevent horizontal scroll */}
             {/* Animated Gradient Bar - Top of Page */}
             <div
                 className="absolute top-0 left-0 w-full h-1 z-10"
@@ -133,7 +143,6 @@ export default function MentorsPage() {
                     animation: "gradientMove 8s linear infinite",
                 }}
             />
-
             {/* CSS Animation for the Gradient Bar */}
             <style jsx>{`
                 @keyframes gradientMove {
@@ -145,8 +154,7 @@ export default function MentorsPage() {
                     }
                 }
             `}</style>
-
-<motion.header 
+            <motion.header
                 className="flex justify-between items-center p-6"
                 initial="hidden"
                 animate={isLoaded ? "visible" : "hidden"}
@@ -166,9 +174,8 @@ export default function MentorsPage() {
                     </Link>
                 </div>
             </motion.header>
-
             {/* Main Content Area */}
-            <motion.main 
+            <motion.main
                 className="container mx-auto px-6 py-2"
                 initial="hidden"
                 animate={isLoaded ? "visible" : "hidden"}
@@ -176,7 +183,7 @@ export default function MentorsPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
             >
                 {/* Sub-heading */}
-                <motion.div 
+                <motion.div
                     className="flex items-center justify-center mb-8"
                     variants={fadeIn}
                     transition={{ duration: 0.6, delay: 0.3 }}
@@ -188,7 +195,7 @@ export default function MentorsPage() {
                 </motion.div>
 
                 {/* Main Heading */}
-                <motion.div 
+                <motion.div
                     className="text-center mb-16"
                     variants={fadeIn}
                     transition={{ duration: 0.6, delay: 0.4 }}
@@ -199,7 +206,7 @@ export default function MentorsPage() {
                 </motion.div>
 
                 {/* Search Input Section */}
-                <motion.div 
+                <motion.div
                     className="mb-10 flex justify-center"
                     variants={fadeIn}
                     transition={{ duration: 0.6, delay: 0.5 }}
@@ -217,7 +224,7 @@ export default function MentorsPage() {
                 </motion.div>
 
                 {/* Mentors Grid */}
-                <motion.div 
+                <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 gap-8"
                     variants={staggerContainer}
                     initial="hidden"
@@ -225,7 +232,11 @@ export default function MentorsPage() {
                 >
                     {filteredMentors.map((mentor) => (
                         // --- HoverCard Component ---
-                        <motion.div key={mentor.id} variants={fadeIn} transition={{ duration: 0.6 }}>
+                        <motion.div
+                            key={mentor.id}
+                            variants={fadeIn}
+                            transition={{ duration: 0.6 }}
+                        >
                             <HoverCard>
                                 <HoverCardTrigger asChild>
                                     {/* The Card component serves as the trigger */}
@@ -243,8 +254,18 @@ export default function MentorsPage() {
                                                             alt={mentor.name}
                                                         />
                                                         <AvatarFallback className="bg-white/10 text-white font-mono text-lg">
-                                                            {mentor.name.split(" ")[0][0]}
-                                                            {mentor.name.split(" ").length > 1 ? mentor.name.split(" ")[1][0] : ""}
+                                                            {
+                                                                mentor.name.split(
+                                                                    " "
+                                                                )[0][0]
+                                                            }
+                                                            {mentor.name.split(
+                                                                " "
+                                                            ).length > 1
+                                                                ? mentor.name.split(
+                                                                      " "
+                                                                  )[1][0]
+                                                                : ""}
                                                         </AvatarFallback>
                                                     </Avatar>
                                                     <div>
@@ -263,15 +284,17 @@ export default function MentorsPage() {
                                             {/* Expertise Badges */}
                                             <div>
                                                 <div className="flex flex-wrap gap-2">
-                                                    {mentor.expertise.map((skill) => (
-                                                        <Badge
-                                                            key={skill}
-                                                            variant="secondary"
-                                                            className="bg-white/10 text-white hover:bg-white hover:text-black font-mono text-xs transition-colors"
-                                                        >
-                                                            {skill}
-                                                        </Badge>
-                                                    ))}
+                                                    {mentor.expertise.map(
+                                                        (skill) => (
+                                                            <Badge
+                                                                key={skill}
+                                                                variant="secondary"
+                                                                className="bg-white/10 text-white hover:bg-white hover:text-black font-mono text-xs transition-colors"
+                                                            >
+                                                                {skill}
+                                                            </Badge>
+                                                        )
+                                                    )}
                                                 </div>
                                             </div>
 
@@ -303,8 +326,11 @@ export default function MentorsPage() {
                                                     size="sm"
                                                     className="font-mono text-xs text-white/80 hover:text-black border border-white/20 hover:bg-white transition-colors"
                                                     onClick={(e) => {
-                                                         e.stopPropagation();
-                                                         window.open(mentor.linkedin, "_blank");
+                                                        e.stopPropagation();
+                                                        window.open(
+                                                            mentor.linkedin,
+                                                            "_blank"
+                                                        );
                                                     }}
                                                     aria-label={`Connect with ${mentor.name} on LinkedIn`}
                                                 >
@@ -316,9 +342,12 @@ export default function MentorsPage() {
                                                     variant="ghost"
                                                     size="sm"
                                                     className="font-mono text-xs text-white/80 hover:text-black border border-white/20 hover:bg-white transition-colors"
-                                                     onClick={(e) => {
-                                                         e.stopPropagation();
-                                                         window.open(mentor.github, "_blank");
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        window.open(
+                                                            mentor.github,
+                                                            "_blank"
+                                                        );
                                                     }}
                                                     aria-label={`View ${mentor.name}'s GitHub profile`}
                                                 >
@@ -355,36 +384,52 @@ export default function MentorsPage() {
                                     </div>
                                 </HoverCardContent>
                                 {/* --- End HoverCardContent --- */}
-
                             </HoverCard>
                         </motion.div>
                         // --- End HoverCard ---
                     ))}
-                     {/* Display message if no mentors match search */}
-                     {filteredMentors.length === 0 && searchTerm && (
-                        <motion.div 
+                    {/* Display message if no mentors match search */}
+                    {filteredMentors.length === 0 && searchTerm && (
+                        <motion.div
                             className="md:col-span-2 text-center py-10"
                             variants={fadeIn}
                         >
-                            <p className="font-mono text-white/70">No mentors found matching "{searchTerm}".</p>
+                            <p className="font-mono text-white/70">
+                                No mentors found matching "{searchTerm}".
+                            </p>
                         </motion.div>
-                     )}
+                    )}
                 </motion.div>
             </motion.main>
-
-            <motion.footer 
+            <motion.footer
                 className="p-6 flex flex-col justify-center items-center border-t border-white/10 mt-20"
                 initial="hidden"
                 animate={isLoaded ? "visible" : "hidden"}
                 variants={fadeIn}
                 transition={{ duration: 0.6, delay: 0.7 }}
             >
-                <div className="font-mono text-center mb-2">BASED IN LPU, JALANDHAR</div>
+                <div className="font-mono text-center mb-2">
+                    BASED IN LPU, JALANDHAR
+                </div>
                 <div className="font-mono text-center">
                     DESIGNED AND DEVELOPED BY{" "}
-                    <a href="https://github.com/vereoman" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-400">@VEREOMAN</a>
-                    {" "}/{" "}
-                    <a href="https://github.com/kdinesh" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-400">@KDINESH</a>
+                    <a
+                        href="https://github.com/vereoman"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-400"
+                    >
+                        @VEREOMAN
+                    </a>{" "}
+                    /{" "}
+                    <a
+                        href="https://github.com/kdinesh24"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-400"
+                    >
+                        @KDINESH
+                    </a>
                 </div>
             </motion.footer>
         </div>

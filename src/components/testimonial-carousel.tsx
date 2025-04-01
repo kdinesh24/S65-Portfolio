@@ -128,7 +128,6 @@ const testimonials: Testimonial[] = [
     },
 ];
 
-
 export default function TestimonialCarousel() {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [isClient, setIsClient] = useState(false);
@@ -147,14 +146,16 @@ export default function TestimonialCarousel() {
             {/* Stars background and shooting stars */}
             <StarsBackground starDensity={0.0002} />
             <ShootingStars />
-            
+
             <div className="relative">
                 {/* Apply mask for fading edges */}
-                <div 
+                <div
                     className="overflow-hidden"
                     style={{
-                        maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-                        WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                        maskImage:
+                            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+                        WebkitMaskImage:
+                            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
                     }}
                 >
                     {isClient && (
@@ -163,29 +164,35 @@ export default function TestimonialCarousel() {
                             className="flex gap-6 items-stretch" // items-stretch ensures cards take full height
                             style={{
                                 // Duplicate the content for seamless looping
-                                width: `${totalWidth * 2}px`, 
+                                width: `${totalWidth * 2}px`,
                                 // Animation definition
-                                animation: `scroll ${testimonials.length * 5}s linear infinite`, 
+                                animation: `scroll ${testimonials.length * 5}s linear infinite`,
                             }}
                         >
                             {/* Render testimonials twice for seamless loop */}
-                            {[...testimonials, ...testimonials].map((item, index) => (
-                                <TestimonialCard
-                                    // Ensure unique keys even for duplicates
-                                    key={`${item.id}-${index}`} 
-                                    testimonial={item}
-                                />
-                            ))}
+                            {[...testimonials, ...testimonials].map(
+                                (item, index) => (
+                                    <TestimonialCard
+                                        // Ensure unique keys even for duplicates
+                                        key={`${item.id}-${index}`}
+                                        testimonial={item}
+                                    />
+                                )
+                            )}
                         </div>
                     )}
                 </div>
             </div>
-            
+
             {/* Add the keyframes CSS */}
             <style jsx global>{`
                 @keyframes scroll {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(-${totalWidth}px); } 
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(-${totalWidth}px);
+                    }
                 }
                 .animate-scroll {
                     /* This class is now just a marker, animation is applied via style */
@@ -193,12 +200,28 @@ export default function TestimonialCarousel() {
             `}</style>
 
             <footer className="relative z-10 p-6 flex flex-col justify-center items-center border-t border-white/10 mt-20">
-                <div className="font-mono text-center mb-2">BASED IN LPU, JALANDHAR</div>
+                <div className="font-mono text-center mb-2">
+                    BASED IN LPU, JALANDHAR
+                </div>
                 <div className="font-mono text-center">
                     DESIGNED AND DEVELOPED BY{" "}
-                    <a href="https://github.com/vereoman" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-400">@VEREOMAN</a>
-                    {" "}/{" "}
-                    <a href="https://github.com/kdinesh24" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-400">@KDINESH24</a>
+                    <a
+                        href="https://github.com/vereoman"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-400"
+                    >
+                        @VEREOMAN
+                    </a>{" "}
+                    /{" "}
+                    <a
+                        href="https://github.com/kdinesh24"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-400"
+                    >
+                        @KDINESH24
+                    </a>
                 </div>
             </footer>
         </div>
@@ -208,12 +231,18 @@ export default function TestimonialCarousel() {
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
     return (
         // Removed outer div, applied styles directly here
-        <div className="bg-black/60 backdrop-blur-sm border border-white/10 rounded-2xl p-6 w-[400px] flex flex-col relative flex-shrink-0"> 
-            <div className="text-white font-mono text-base mb-6 flex-grow min-h-[100px]"> {/* Added min-height */}
-                "{testimonial.quote || "Passionate student exploring the world of technology."}" {/* Added default quote */}
+        <div className="bg-black/60 backdrop-blur-sm border border-white/10 rounded-2xl p-6 w-[400px] flex flex-col relative flex-shrink-0">
+            <div className="text-white font-mono text-base mb-6 flex-grow min-h-[100px]">
+                {" "}
+                {/* Added min-height */}"
+                {testimonial.quote ||
+                    "Passionate student exploring the world of technology."}
+                " {/* Added default quote */}
             </div>
 
-            <div className="flex items-center mt-auto"> {/* Use mt-auto to push author to bottom */}
+            <div className="flex items-center mt-auto">
+                {" "}
+                {/* Use mt-auto to push author to bottom */}
                 <div>
                     <div className="text-white font-mono font-semibold">
                         {testimonial.author}
