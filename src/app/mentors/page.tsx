@@ -15,7 +15,15 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+// Import HoverCard components
+import {
+    HoverCard,
+    HoverCardContent,
+    HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { motion } from "framer-motion";
 
+// Ensure mentorsData includes a 'description' field for the hover card
 const mentorsData = [
     {
         id: 1,
@@ -24,55 +32,98 @@ const mentorsData = [
         expertise: ["Creative Thinking", "Communication", "Management Skills"],
         experience: "1+ years",
         projects: "2",
-        avatar: "/images/riza.jpg",
+        avatar: "/images/riza.jpg", // Make sure this path is correct in your public folder
         linkedin: "https://www.linkedin.com/in/rizayeasmin",
         github: "https://github.com/codewithriza",
+        description: "Experienced Program Manager skilled in leading cross-functional teams, fostering creative thinking, and driving project success through effective communication.", // Description for hover card
     },
     {
         id: 2,
         name: "Shashwat Mahendra",
         title: "Technical Mentor",
-        expertise: ["Web Deveeopment", "Prompt Engineering", "Data Structures"],
+        expertise: ["Web Development", "Prompt Engineering", "Data Structures"],
         experience: "12+ years",
         projects: "100+",
-        avatar: "/images/shashwat.jpg",
+        avatar: "/images/shashwat.jpg", // Make sure this path is correct in your public folder
         linkedin: "https://www.linkedin.com/in/shashwat-mahendra-214598163",
         github: "https://github.com/Shashwat2104",
+        description: "Veteran Technical Mentor with over a decade of experience, specializing in full-stack web development, prompt engineering, advanced data structures, and guiding aspiring developers.", // Description for hover card
     },
+    // Add more mentors here with 'description' fields
 ];
 
 export default function MentorsPage() {
     const [currentTime, setCurrentTime] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
-    const [animationTriggered, setAnimationTriggered] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
+    // Effect for updating current time
     useEffect(() => {
         const updateTime = () => {
+            // Using client's local time
             const now = new Date();
-            const hours = String(now.getHours()).padStart(2, "0");
-            const minutes = String(now.getMinutes()).padStart(2, "0");
-            const seconds = String(now.getSeconds()).padStart(2, "0");
-            setCurrentTime(`${hours}:${minutes}:${seconds}`);
+            // Using options for IST based on current date context (April 1, 2025)
+            // Note: Relies on browser's Intl support and correct timezone data.
+            const options = { timeZone: 'Asia/Kolkata', hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit" };
+            try {
+                 // Displaying time for India (IST)
+                 setCurrentTime(new Intl.DateTimeFormat('en-GB', {
+                     timeZone: 'Asia/Kolkata',
+                     hour12: false,
+                     hour: "2-digit",
+                     minute: "2-digit",
+                     second: "2-digit"
+                 }).format(now));
+            } catch (e) {
+                 // Fallback to local time if Intl fails
+                 const hours = String(now.getHours()).padStart(2, "0");
+                 const minutes = String(now.getMinutes()).padStart(2, "0");
+                 const seconds = String(now.getSeconds()).padStart(2, "0");
+                 setCurrentTime(`${hours}:${minutes}:${seconds} (Local)`);
+                 console.error("Intl formatting failed, using local time:", e);
+            }
         };
 
-        updateTime();
-        const interval = setInterval(updateTime, 1000);
+        updateTime(); // Initial call
+        const interval = setInterval(updateTime, 1000); // Update every second
 
+        // Set isLoaded to true after a short delay
         setTimeout(() => {
-            setAnimationTriggered(true);
-        }, 100);
+            setIsLoaded(true);
+        }, 300);
 
-        return () => clearInterval(interval);
-    }, []);
+        // Cleanup interval on component unmount
+        return () => {
+            clearInterval(interval);
+        }
+    }, []); // Empty dependency array ensures this runs only once on mount
 
+    // Filter mentors based on search term (name or title)
     const filteredMentors = mentorsData.filter(
         (mentor) =>
             mentor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             mentor.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    // Animation variants
+    const fadeIn = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 }
+    };
+
+    const staggerContainer = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
     return (
-        <div className="relative w-full min-h-screen bg-black text-white overflow-hidden">
+        <div className="relative w-full min-h-screen bg-black text-white overflow-x-hidden"> {/* Prevent horizontal scroll */}
+            {/* Animated Gradient Bar - Top of Page */}
             <div
                 className="absolute top-0 left-0 w-full h-1 z-10"
                 style={{
@@ -83,6 +134,7 @@ export default function MentorsPage() {
                 }}
             />
 
+            {/* CSS Animation for the Gradient Bar */}
             <style jsx>{`
                 @keyframes gradientMove {
                     0% {
@@ -94,7 +146,13 @@ export default function MentorsPage() {
                 }
             `}</style>
 
-            <header className="flex justify-between items-center p-6">
+<motion.header 
+                className="flex justify-between items-center p-6"
+                initial="hidden"
+                animate={isLoaded ? "visible" : "hidden"}
+                variants={fadeIn}
+                transition={{ duration: 0.6 }}
+            >
                 <div className="flex items-center space-x-4">
                     <span className="font-mono text-lg">
                         LOCAL - <strong>{currentTime}</strong>
@@ -107,23 +165,45 @@ export default function MentorsPage() {
                         </button>
                     </Link>
                 </div>
-            </header>
+            </motion.header>
 
-            <main className="container mx-auto px-6 py-2">
-                <div className="flex items-center justify-center mb-8">
-                    <div className="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
+            {/* Main Content Area */}
+            <motion.main 
+                className="container mx-auto px-6 py-2"
+                initial="hidden"
+                animate={isLoaded ? "visible" : "hidden"}
+                variants={fadeIn}
+                transition={{ duration: 0.8, delay: 0.2 }}
+            >
+                {/* Sub-heading */}
+                <motion.div 
+                    className="flex items-center justify-center mb-8"
+                    variants={fadeIn}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                    <div className="w-2 h-2 bg-red-400 rounded-full mr-3 animate-pulse"></div>
                     <span className="font-mono text-lg tracking-wider">
                         LEARN FROM THE BEST
                     </span>
-                </div>
+                </motion.div>
 
-                <div className="text-center mb-16">
+                {/* Main Heading */}
+                <motion.div 
+                    className="text-center mb-16"
+                    variants={fadeIn}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                >
                     <h1 className="font-mono text-7xl font-bold tracking-tighter">
                         OUR-MENTORS
                     </h1>
-                </div>
+                </motion.div>
 
-                <div className="mb-10 flex justify-center">
+                {/* Search Input Section */}
+                <motion.div 
+                    className="mb-10 flex justify-center"
+                    variants={fadeIn}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                >
                     <div className="relative w-full max-w-md">
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50 w-4 h-4" />
                         <Input
@@ -131,114 +211,182 @@ export default function MentorsPage() {
                             placeholder="Search mentors..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="bg-white/5 border-white/10 text-white pl-10 font-mono"
+                            className="bg-white/5 border-white/10 text-white pl-10 font-mono rounded-md focus:ring-1 focus:ring-red-400 focus:border-red-400"
                         />
                     </div>
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Mentors Grid */}
+                <motion.div 
+                    className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                    variants={staggerContainer}
+                    initial="hidden"
+                    animate={isLoaded ? "visible" : "hidden"}
+                >
                     {filteredMentors.map((mentor) => (
-                        <Card
-                            key={mentor.id}
-                            className="bg-white/5 border-white/10 text-white hover:bg-white/10 transition-colors overflow-hidden"
-                        >
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-400 to-purple-600"></div>
-                            <CardHeader>
-                                <div className="flex justify-between items-start">
-                                    <div className="flex items-center gap-4">
-                                        <Avatar className="h-16 w-16 border border-white/20">
-                                            <AvatarImage
-                                                src={mentor.avatar}
-                                                alt={mentor.name}
-                                            />
-                                            <AvatarFallback className="bg-white/10 text-white font-mono text-lg">
-                                                {mentor.name.split(" ")[0][0]}
-                                                {mentor.name.split(" ")[1][0]}
-                                            </AvatarFallback>
-                                        </Avatar>
-                                        <div>
-                                            <CardTitle className="font-mono text-xl">
-                                                {mentor.name}
-                                            </CardTitle>
-                                            <CardDescription className="text-white/70 font-mono">
-                                                {mentor.title}
-                                            </CardDescription>
+                        // --- HoverCard Component ---
+                        <motion.div key={mentor.id} variants={fadeIn} transition={{ duration: 0.6 }}>
+                            <HoverCard>
+                                <HoverCardTrigger asChild>
+                                    {/* The Card component serves as the trigger */}
+                                    <Card
+                                        className="relative bg-white/5 border border-white/10 text-white hover:border-white/30 hover:bg-white/10 transition-all duration-300 ease-in-out overflow-hidden cursor-pointer group" // group class remains in case needed elsewhere
+                                    >
+                                        {/* Gradient line DIV removed from here */}
+
+                                        <CardHeader className="pt-6">
+                                            <div className="flex justify-between items-start">
+                                                <div className="flex items-center gap-4">
+                                                    <Avatar className="h-16 w-16 border-2 border-white/20 group-hover:border-white/40 transition-colors">
+                                                        <AvatarImage
+                                                            src={mentor.avatar}
+                                                            alt={mentor.name}
+                                                        />
+                                                        <AvatarFallback className="bg-white/10 text-white font-mono text-lg">
+                                                            {mentor.name.split(" ")[0][0]}
+                                                            {mentor.name.split(" ").length > 1 ? mentor.name.split(" ")[1][0] : ""}
+                                                        </AvatarFallback>
+                                                    </Avatar>
+                                                    <div>
+                                                        {/* Removed 'group-hover:text-red-300' from CardTitle */}
+                                                        <CardTitle className="font-mono text-xl transition-colors">
+                                                            {mentor.name}
+                                                        </CardTitle>
+                                                        <CardDescription className="text-white/70 font-mono">
+                                                            {mentor.title}
+                                                        </CardDescription>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </CardHeader>
+                                        <CardContent className="space-y-4">
+                                            {/* Expertise Badges */}
+                                            <div>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {mentor.expertise.map((skill) => (
+                                                        <Badge
+                                                            key={skill}
+                                                            variant="secondary"
+                                                            className="bg-white/10 text-white hover:bg-white hover:text-black font-mono text-xs transition-colors"
+                                                        >
+                                                            {skill}
+                                                        </Badge>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Experience and Projects */}
+                                            <div className="grid grid-cols-2 gap-4 pt-2">
+                                                <div className="bg-white/5 p-3 rounded-md border border-white/10">
+                                                    <p className="font-mono text-xs text-white/60">
+                                                        EXPERIENCE
+                                                    </p>
+                                                    <p className="font-mono text-lg">
+                                                        {mentor.experience}
+                                                    </p>
+                                                </div>
+                                                <div className="bg-white/5 p-3 rounded-md border border-white/10">
+                                                    <p className="font-mono text-xs text-white/60">
+                                                        PROJECTS
+                                                    </p>
+                                                    <p className="font-mono text-lg">
+                                                        {mentor.projects}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                        <CardFooter className="flex justify-end border-t border-white/10 pt-4 pb-4">
+                                            <div className="flex space-x-3">
+                                                {/* LinkedIn Button */}
+                                                <Button
+                                                    variant="ghost"
+                                                    size="sm"
+                                                    className="font-mono text-xs text-white/80 hover:text-black border border-white/20 hover:bg-white transition-colors"
+                                                    onClick={(e) => {
+                                                         e.stopPropagation();
+                                                         window.open(mentor.linkedin, "_blank");
+                                                    }}
+                                                    aria-label={`Connect with ${mentor.name} on LinkedIn`}
+                                                >
+                                                    <Linkedin className="h-3 w-3 mr-1" />
+                                                    CONNECT
+                                                </Button>
+                                                {/* GitHub Button */}
+                                                <Button
+                                                    variant="ghost"
+                                                    size="sm"
+                                                    className="font-mono text-xs text-white/80 hover:text-black border border-white/20 hover:bg-white transition-colors"
+                                                     onClick={(e) => {
+                                                         e.stopPropagation();
+                                                         window.open(mentor.github, "_blank");
+                                                    }}
+                                                    aria-label={`View ${mentor.name}'s GitHub profile`}
+                                                >
+                                                    <Github className="h-3 w-3 mr-1" />
+                                                    PROFILE
+                                                </Button>
+                                            </div>
+                                        </CardFooter>
+                                    </Card>
+                                </HoverCardTrigger>
+
+                                {/* --- Updated HoverCardContent --- */}
+                                {/* Content that appears on hover - Image Left, Description Right */}
+                                <HoverCardContent className="w-96 bg-black border border-white/20 text-white p-4 rounded-lg shadow-xl">
+                                    <div className="flex items-start space-x-4">
+                                        {/* Left Column: Image - Increased Size */}
+                                        <img
+                                            src={mentor.avatar}
+                                            alt={`Mentor ${mentor.name}`}
+                                            className="w-40 h-40 rounded-md object-cover flex-shrink-0" // Increased from w-32 h-32
+                                        />
+                                        {/* Right Column: Description */}
+                                        <div className="flex-1 min-w-0">
+                                            {mentor.description ? (
+                                                <p className="text-sm text-white/80 font-mono">
+                                                    {mentor.description}
+                                                </p>
+                                            ) : (
+                                                <p className="text-sm text-white/60 font-mono italic">
+                                                    No description available.
+                                                </p>
+                                            )}
                                         </div>
                                     </div>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                                <div>
-                                    <div className="flex flex-wrap gap-2">
-                                        {mentor.expertise.map((skill) => (
-                                            <Badge
-                                                key={skill}
-                                                variant="secondary"
-                                                className="bg-white/10 text-white hover:bg-white hover:text-black font-mono text-xs"
-                                            >
-                                                {skill}
-                                            </Badge>
-                                        ))}
-                                    </div>
-                                </div>
+                                </HoverCardContent>
+                                {/* --- End HoverCardContent --- */}
 
-                                <div className="grid grid-cols-2 gap-4 pt-2">
-                                    <div className="bg-white/5 p-3 rounded-md">
-                                        <p className="font-mono text-xs text-white/60">
-                                            EXPERIENCE
-                                        </p>
-                                        <p className="font-mono text-lg">
-                                            {mentor.experience}
-                                        </p>
-                                    </div>
-                                    <div className="bg-white/5 p-3 rounded-md">
-                                        <p className="font-mono text-xs text-white/60">
-                                            PROJECTS
-                                        </p>
-                                        <p className="font-mono text-lg">
-                                            {mentor.projects}
-                                        </p>
-                                    </div>
-                                </div>
-                            </CardContent>
-                            <CardFooter className="flex justify-end border-t border-white/10 pt-4">
-                                <div className="flex space-x-3">
-                                    <Button
-                                        variant="ghost"
-                                        className="font-mono text-xs text-white/80 hover:text-black border border-white/20"
-                                        onClick={() =>
-                                            window.open(
-                                                mentor.linkedin,
-                                                "_blank"
-                                            )
-                                        }
-                                    >
-                                        <Linkedin className="h-3 w-3 mr-1" />
-                                        CONNECT
-                                    </Button>
-                                    <Button
-                                        variant="ghost"
-                                        className="font-mono text-xs text-white/80 hover:text-black border border-white/20"
-                                        onClick={() =>
-                                            window.open(mentor.github, "_blank")
-                                        }
-                                    >
-                                        <Github className="h-3 w-3 mr-1" />
-                                        PROFILE
-                                    </Button>
-                                </div>
-                            </CardFooter>
-                        </Card>
+                            </HoverCard>
+                        </motion.div>
+                        // --- End HoverCard ---
                     ))}
-                </div>
-            </main>
+                     {/* Display message if no mentors match search */}
+                     {filteredMentors.length === 0 && searchTerm && (
+                        <motion.div 
+                            className="md:col-span-2 text-center py-10"
+                            variants={fadeIn}
+                        >
+                            <p className="font-mono text-white/70">No mentors found matching "{searchTerm}".</p>
+                        </motion.div>
+                     )}
+                </motion.div>
+            </motion.main>
 
-            <footer className="p-6 flex justify-between items-center border-t border-white/10 mt-20">
-                <div className="font-mono">BASED IN LPU, JALANDHAR</div>
-                <div className="font-mono">
-                    //DIGITAL DESIGNER + FRAMER DEVELOPER
+            <motion.footer 
+                className="p-6 flex flex-col justify-center items-center border-t border-white/10 mt-20"
+                initial="hidden"
+                animate={isLoaded ? "visible" : "hidden"}
+                variants={fadeIn}
+                transition={{ duration: 0.6, delay: 0.7 }}
+            >
+                <div className="font-mono text-center mb-2">BASED IN LPU, JALANDHAR</div>
+                <div className="font-mono text-center">
+                    DESIGNED AND DEVELOPED BY{" "}
+                    <a href="https://github.com/vereoman" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-400">@VEREOMAN</a>
+                    {" "}/{" "}
+                    <a href="https://github.com/kdinesh" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-400">@KDINESH</a>
                 </div>
-            </footer>
+            </motion.footer>
         </div>
     );
 }
