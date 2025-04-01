@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Search, Linkedin, Github } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import {
     Card,
     CardContent,
@@ -59,13 +60,6 @@ export default function MentorsPage() {
     useEffect(() => {
         const updateTime = () => {
             const now = new Date();
-            const options = {
-                timeZone: "Asia/Kolkata",
-                hour12: false,
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-            };
             try {
                 setCurrentTime(
                     new Intl.DateTimeFormat("en-GB", {
@@ -333,11 +327,15 @@ export default function MentorsPage() {
 
                                 <HoverCardContent className="w-96 bg-black border border-white/20 text-white p-4 rounded-lg shadow-xl">
                                     <div className="flex items-start space-x-4">
-                                        <img
-                                            src={mentor.avatar}
-                                            alt={`Mentor ${mentor.name}`}
-                                            className="w-40 h-40 rounded-md object-cover flex-shrink-0"
-                                        />
+                                        <div className="w-40 h-40 rounded-md object-cover flex-shrink-0 relative">
+                                             <Image
+                                                src={mentor.avatar}
+                                                alt={`Mentor ${mentor.name}`}
+                                                fill
+                                                sizes="10rem"
+                                                className="rounded-md object-cover"
+                                             />
+                                        </div>
                                         <div className="flex-1 min-w-0">
                                             {mentor.description ? (
                                                 <p className="text-sm text-white/80 font-mono">
@@ -360,7 +358,7 @@ export default function MentorsPage() {
                             variants={fadeIn}
                         >
                             <p className="font-mono text-white/70">
-                                No mentors found matching "{searchTerm}".
+                                No mentors found matching &quot;{searchTerm}&quot;.
                             </p>
                         </motion.div>
                     )}

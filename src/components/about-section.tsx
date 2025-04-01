@@ -46,7 +46,7 @@ const aboutSubsections = [
         hoverTitle: "What We Stand For",
         hoverContent: (
             <ul className="space-y-1 text-sm">
-                <li>Integrity: Doing what's right.</li>
+                <li>Integrity: Doing what&apos;s right.</li>
                 <li>Collaboration: Stronger together.</li>
                 <li>Innovation: Always improving.</li>
                 <li>Impact: Making a difference.</li>

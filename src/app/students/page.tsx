@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
     Card,
     CardContent,
@@ -558,14 +559,18 @@ export default function StudentsPage() {
 
                                 <HoverCardContent className="w-96 bg-black border border-white/20 text-white p-4 rounded-lg shadow-xl">
                                     <div className="flex items-start space-x-4">
-                                        <img
-                                            src={student.avatar}
-                                            alt={`Student ${student.name}`}
-                                            className="w-40 h-40 rounded-md object-cover flex-shrink-0"
-                                            onError={(e) => {
-                                                e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(student.name)}&background=random`;
-                                            }}
-                                        />
+                                        <div className="w-40 h-40 rounded-md object-cover flex-shrink-0 relative">
+                                            <Image
+                                                src={student.avatar}
+                                                alt={`Student ${student.name}`}
+                                                fill
+                                                sizes="10rem"
+                                                className="rounded-md object-cover"
+                                                onError={(e) => {
+                                                    e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(student.name)}&background=random`;
+                                                }}
+                                            />
+                                        </div>
                                         <div className="flex-1 min-w-0">
                                             {student.description ? (
                                                 <p className="text-sm text-white/80 font-mono">
@@ -590,7 +595,7 @@ export default function StudentsPage() {
                             variants={fadeIn}
                         >
                             <p className="font-mono text-white/70">
-                                No students found matching "{searchTerm}".
+                                No students found matching &quot;{searchTerm}&quot;.
                             </p>
                         </motion.div>
                     )}
