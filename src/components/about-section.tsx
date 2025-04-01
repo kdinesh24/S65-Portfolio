@@ -1,90 +1,161 @@
 "use client";
-import { useState } from "react";
-import { StarsBackground } from "./ui/stars-background";
-import { ShootingStars } from "./ui/shooting-stars";
-import { ChevronDown, ChevronUp } from "lucide-react";
 
-export default function DesignerPortfolio() {
-    // State to track which FAQ item is open
-    const [openIndex, setOpenIndex] = useState(null);
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import {
+    HoverCard,
+    HoverCardContent,
+    HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { motion } from "framer-motion";
+import {
+    Rocket,
+    Target,
+    Users,
+    Heart,
+    Lightbulb,
+    Building,
+} from "lucide-react";
 
-    // Toggle function for opening/closing FAQ items
-    const toggleFAQ = (index) => {
-        setOpenIndex(openIndex === index ? null : index);
-    };
+const aboutSubsections = [
+    {
+        id: "mission",
+        triggerTitle: "Mission",
+        triggerIcon: <Target className="h-6 w-6 mb-2 text-white" />,
+        hoverTitle: "Driving Innovation Forward",
+        hoverContent:
+            "Our mission is to leverage cutting-edge technology to create solutions that solve real-world problems and drive significant progress in our industry.",
+    },
+    {
+        id: "vision",
+        triggerTitle: "Vision",
+        triggerIcon: <Rocket className="h-6 w-6 mb-2 text-white" />,
+        hoverTitle: "Shaping the Future",
+        hoverContent:
+            "We envision a future where technology seamlessly integrates with daily life, empowering individuals and communities globally. We strive to be at the forefront of this transformation.",
+    },
+    {
+        id: "values",
+        triggerTitle: "Values",
+        triggerIcon: <Heart className="h-6 w-6 mb-2 text-white" />,
+        hoverTitle: "What We Stand For",
+        hoverContent: (
+            <ul className="space-y-1 text-sm">
+                <li>Integrity: Doing what's right.</li>
+                <li>Collaboration: Stronger together.</li>
+                <li>Innovation: Always improving.</li>
+                <li>Impact: Making a difference.</li>
+            </ul>
+        ),
+    },
+    {
+        id: "team",
+        triggerTitle: "Team",
+        triggerIcon: <Users className="h-6 w-6 mb-2 text-white" />,
+        hoverTitle: "The People Behind",
+        hoverContent:
+            "Our diverse team consists of passionate experts, creative thinkers, and dedicated professionals committed to achieving excellence together.",
+    },
+    {
+        id: "culture",
+        triggerTitle: "Culture",
+        triggerIcon: <Lightbulb className="h-6 w-6 mb-2 text-white" />,
+        hoverTitle: "How We Work",
+        hoverContent:
+            "We foster a culture of continuous learning, mutual respect, and open communication, creating an environment where ideas flourish.",
+    },
+    {
+        id: "history",
+        triggerTitle: "History",
+        triggerIcon: <Building className="h-6 w-6 mb-2 text-white" />,
+        hoverTitle: "Our Journey",
+        hoverContent: `Founded in ${new Date().getFullYear() - 2}, Squad-65 started with a small team and a big idea. Discover the milestones that shaped us.`,
+    },
+];
 
-    // FAQ data
-    const faqItems = [
-        {
-            question: "Respect Each Other",
-            answer: "We believe in creating a community where every voice is heard and valued. By respecting each other's ideas, backgrounds, and contributions, we foster an environment of trust and collaboration that allows us to achieve more together than we ever could alone.",
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            delayChildren: 0.15,
+            staggerChildren: 0.08,
         },
-        {
-            question: "Have a Growth Mindset",
-            answer: "We embrace challenges as opportunities to learn and improve. With a growth mindset, we understand that abilities can be developed through dedication and hard work. We view obstacles not as setbacks but as stepping stones toward greater achievement and innovation.",
-        },
-        {
-            question: "Learn with Joy",
-            answer: "Learning is at the heart of everything we do, and we approach it with enthusiasm and curiosity. We celebrate the excitement of discovery and the satisfaction of mastering new skills. By finding joy in our learning journey, we stay motivated and inspired to push boundaries.",
-        },
-        {
-            question: "Make a Difference",
-            answer: "Our purpose extends beyond our immediate goals—we strive to create meaningful impact in everything we do. Whether through our projects, our interactions, or our community involvement, we're committed to leaving a positive mark on the world around us.",
-        },
-        {
-            question: "What is Squad-65?",
-            answer: "Squad-65 is a collective built on a foundation of unity and purpose. We bring together diverse talents and perspectives to create solutions that matter. Our strength comes from our shared values and commitment to excellence in everything we do.",
-        },
-    ];
+    },
+};
 
+const itemVariants = {
+    hidden: { y: 10, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            type: "spring",
+            stiffness: 120,
+            damping: 15,
+        },
+    },
+};
+
+export function AboutSection() {
     return (
-        <div className="bg-black text-white font-mono relative overflow-hidden min-h-screen">
-            {/* Stars background and shooting stars */}
-            <StarsBackground starDensity={0.0002} />
-            <ShootingStars />
-
-            <section className="py-12 px-4 md:px-24 relative z-10 flex justify-center items-center min-h-screen">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h2 className="text-4xl md:text-6xl font-bold mb-12">
-                        WHAT WE STAND FOR?
-                    </h2>
-
-                    <div className="space-y-4">
-                        {faqItems.map((item, index) => (
-                            <div
-                                key={index}
-                                className="border border-gray-700 rounded-md overflow-hidden transition-all duration-300"
-                            >
-                                <button
-                                    className="w-full px-6 py-4 text-center flex justify-between items-center hover:bg-white hover:text-black transition-colors"
-                                    onClick={() => toggleFAQ(index)}
+        <Card className="font-mono w-full max-w-3xl mx-auto my-10 bg-transparent text-white border border-white/10 shadow-lg rounded-md">
+            <CardHeader className="text-center pb-2">
+                <CardTitle className="text-2xl font-normal text-white tracking-wider">
+                    SQUAD-65
+                </CardTitle>
+                <CardDescription className="text-sm text-white/70 mt-1">
+                    Hover over any section below to explore
+                </CardDescription>
+            </CardHeader>
+            <CardContent className="p-4 md:p-6">
+                <motion.div
+                    className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    {aboutSubsections.map((section) => (
+                        <HoverCard
+                            key={section.id}
+                            openDelay={150}
+                            closeDelay={75}
+                        >
+                            <HoverCardTrigger asChild>
+                                <motion.div
+                                    variants={itemVariants}
+                                    className="flex flex-col items-center justify-center p-3 md:p-4 border border-white/10 rounded-md cursor-pointer bg-transparent hover:bg-white/5 hover:border-white/20 transition-all duration-200 aspect-square"
                                 >
-                                    <span className="text-lg font-medium flex-grow">
-                                        {item.question}
-                                    </span>
-                                    {openIndex === index ? (
-                                        <ChevronUp className="w-5 h-5" />
-                                    ) : (
-                                        <ChevronDown className="w-5 h-5" />
-                                    )}
-                                </button>
-
-                                <div
-                                    className={`px-6 overflow-hidden transition-all duration-300 ${
-                                        openIndex === index
-                                            ? "max-h-96 py-4"
-                                            : "max-h-0 py-0"
-                                    }`}
-                                >
-                                    <p className="text-gray-300 leading-relaxed tracking-wide text-center">
-                                        {item.answer}
+                                    {section.triggerIcon}
+                                    <p className="font-mono text-center text-xs md:text-sm text-white/80">
+                                        {section.triggerTitle}
                                     </p>
+                                </motion.div>
+                            </HoverCardTrigger>
+                            <HoverCardContent
+                                className="w-96 z-50 bg-black border border-white/10 text-white rounded-md shadow-md font-mono"
+                                side="top"
+                                align="center"
+                            >
+                                <div className="space-y-4 p-5">
+                                    <h4 className="text-lg font-mono tracking-wide uppercase text-white">
+                                        {section.hoverTitle}
+                                    </h4>
+                                    <div className="text-base text-white/90 leading-relaxed">
+                                        {section.hoverContent}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-        </div>
+                            </HoverCardContent>
+                        </HoverCard>
+                    ))}
+                </motion.div>
+            </CardContent>
+        </Card>
     );
 }

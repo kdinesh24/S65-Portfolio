@@ -15,7 +15,6 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-// Import HoverCard components
 import {
     HoverCard,
     HoverCardContent,
@@ -23,7 +22,6 @@ import {
 } from "@/components/ui/hover-card";
 import { motion } from "framer-motion";
 
-// Ensure mentorsData includes a 'description' field for the hover card
 const mentorsData = [
     {
         id: 1,
@@ -32,10 +30,11 @@ const mentorsData = [
         expertise: ["Creative Thinking", "Communication", "Management Skills"],
         experience: "1+ years",
         projects: "2",
-        avatar: "/images/riza.jpg", // Make sure this path is correct in your public folder
+        avatar: "/images/riza.jpg",
         linkedin: "https://www.linkedin.com/in/rizayeasmin",
         github: "https://github.com/codewithriza",
-        description: "Program Manager specializing in team leadership, creative solutions, and effective project communication.",
+        description:
+            "Program Manager specializing in team leadership, creative solutions, and effective project communication.",
     },
     {
         id: 2,
@@ -44,12 +43,12 @@ const mentorsData = [
         expertise: ["Web Development", "Prompt Engineering", "Data Structures"],
         experience: "8+ years",
         projects: "100+",
-        avatar: "/images/shashwat.jpg", // Make sure this path is correct in your public folder
+        avatar: "/images/shashwat.jpg",
         linkedin: "https://www.linkedin.com/in/shashwat-mahendra-214598163",
         github: "https://github.com/Shashwat2104",
-        description: "Seasoned technical mentor with expertise in full-stack development, prompt engineering, and data structures.",
+        description:
+            "Seasoned technical mentor with expertise in full-stack development, prompt engineering, and data structures.",
     },
-    // Add more mentors here with 'description' fields
 ];
 
 export default function MentorsPage() {
@@ -57,13 +56,9 @@ export default function MentorsPage() {
     const [searchTerm, setSearchTerm] = useState("");
     const [isLoaded, setIsLoaded] = useState(false);
 
-    // Effect for updating current time
     useEffect(() => {
         const updateTime = () => {
-            // Using client's local time
             const now = new Date();
-            // Using options for IST based on current date context (April 1, 2025)
-            // Note: Relies on browser's Intl support and correct timezone data.
             const options = {
                 timeZone: "Asia/Kolkata",
                 hour12: false,
@@ -72,7 +67,6 @@ export default function MentorsPage() {
                 second: "2-digit",
             };
             try {
-                // Displaying time for India (IST)
                 setCurrentTime(
                     new Intl.DateTimeFormat("en-GB", {
                         timeZone: "Asia/Kolkata",
@@ -83,7 +77,6 @@ export default function MentorsPage() {
                     }).format(now)
                 );
             } catch (e) {
-                // Fallback to local time if Intl fails
                 const hours = String(now.getHours()).padStart(2, "0");
                 const minutes = String(now.getMinutes()).padStart(2, "0");
                 const seconds = String(now.getSeconds()).padStart(2, "0");
@@ -92,28 +85,24 @@ export default function MentorsPage() {
             }
         };
 
-        updateTime(); // Initial call
-        const interval = setInterval(updateTime, 1000); // Update every second
+        updateTime();
+        const interval = setInterval(updateTime, 1000);
 
-        // Set isLoaded to true after a short delay
         setTimeout(() => {
             setIsLoaded(true);
         }, 300);
 
-        // Cleanup interval on component unmount
         return () => {
             clearInterval(interval);
         };
-    }, []); // Empty dependency array ensures this runs only once on mount
+    }, []);
 
-    // Filter mentors based on search term (name or title)
     const filteredMentors = mentorsData.filter(
         (mentor) =>
             mentor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             mentor.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // Animation variants
     const fadeIn = {
         hidden: { opacity: 0 },
         visible: { opacity: 1 },
@@ -132,8 +121,6 @@ export default function MentorsPage() {
     return (
         <div className="relative w-full min-h-screen bg-black text-white overflow-x-hidden">
             {" "}
-            {/* Prevent horizontal scroll */}
-            {/* Animated Gradient Bar - Top of Page */}
             <div
                 className="absolute top-0 left-0 w-full h-1 z-10"
                 style={{
@@ -143,7 +130,6 @@ export default function MentorsPage() {
                     animation: "gradientMove 8s linear infinite",
                 }}
             />
-            {/* CSS Animation for the Gradient Bar */}
             <style jsx>{`
                 @keyframes gradientMove {
                     0% {
@@ -174,7 +160,6 @@ export default function MentorsPage() {
                     </Link>
                 </div>
             </motion.header>
-            {/* Main Content Area */}
             <motion.main
                 className="container mx-auto px-6 py-2"
                 initial="hidden"
@@ -182,7 +167,6 @@ export default function MentorsPage() {
                 variants={fadeIn}
                 transition={{ duration: 0.8, delay: 0.2 }}
             >
-                {/* Sub-heading */}
                 <motion.div
                     className="flex items-center justify-center mb-8"
                     variants={fadeIn}
@@ -194,7 +178,6 @@ export default function MentorsPage() {
                     </span>
                 </motion.div>
 
-                {/* Main Heading */}
                 <motion.div
                     className="text-center mb-16"
                     variants={fadeIn}
@@ -205,7 +188,6 @@ export default function MentorsPage() {
                     </h1>
                 </motion.div>
 
-                {/* Search Input Section */}
                 <motion.div
                     className="mb-10 flex justify-center"
                     variants={fadeIn}
@@ -215,7 +197,6 @@ export default function MentorsPage() {
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50 w-4 h-4" />
                         <Input
                             type="text"
-                            placeholder="Search mentors..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             className="bg-white/5 border-white/10 text-white pl-10 font-mono rounded-md focus:ring-1 focus:ring-red-400 focus:border-red-400"
@@ -223,7 +204,6 @@ export default function MentorsPage() {
                     </div>
                 </motion.div>
 
-                {/* Mentors Grid */}
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 gap-8"
                     variants={staggerContainer}
@@ -231,7 +211,6 @@ export default function MentorsPage() {
                     animate={isLoaded ? "visible" : "hidden"}
                 >
                     {filteredMentors.map((mentor) => (
-                        // --- HoverCard Component ---
                         <motion.div
                             key={mentor.id}
                             variants={fadeIn}
@@ -239,12 +218,9 @@ export default function MentorsPage() {
                         >
                             <HoverCard>
                                 <HoverCardTrigger asChild>
-                                    {/* The Card component serves as the trigger */}
                                     <Card
                                         className="relative bg-white/5 border border-white/10 text-white hover:border-white/30 hover:bg-white/10 transition-all duration-300 ease-in-out overflow-hidden cursor-pointer group" // group class remains in case needed elsewhere
                                     >
-                                        {/* Gradient line DIV removed from here */}
-
                                         <CardHeader className="pt-6">
                                             <div className="flex justify-between items-start">
                                                 <div className="flex items-center gap-4">
@@ -269,7 +245,6 @@ export default function MentorsPage() {
                                                         </AvatarFallback>
                                                     </Avatar>
                                                     <div>
-                                                        {/* Removed 'group-hover:text-red-300' from CardTitle */}
                                                         <CardTitle className="font-mono text-xl transition-colors">
                                                             {mentor.name}
                                                         </CardTitle>
@@ -281,7 +256,6 @@ export default function MentorsPage() {
                                             </div>
                                         </CardHeader>
                                         <CardContent className="space-y-4">
-                                            {/* Expertise Badges */}
                                             <div>
                                                 <div className="flex flex-wrap gap-2">
                                                     {mentor.expertise.map(
@@ -298,7 +272,6 @@ export default function MentorsPage() {
                                                 </div>
                                             </div>
 
-                                            {/* Experience and Projects */}
                                             <div className="grid grid-cols-2 gap-4 pt-2">
                                                 <div className="bg-white/5 p-3 rounded-md border border-white/10">
                                                     <p className="font-mono text-xs text-white/60">
@@ -320,7 +293,6 @@ export default function MentorsPage() {
                                         </CardContent>
                                         <CardFooter className="flex justify-end border-t border-white/10 pt-4 pb-4">
                                             <div className="flex space-x-3">
-                                                {/* LinkedIn Button */}
                                                 <Button
                                                     variant="ghost"
                                                     size="sm"
@@ -337,7 +309,7 @@ export default function MentorsPage() {
                                                     <Linkedin className="h-3 w-3 mr-1" />
                                                     CONNECT
                                                 </Button>
-                                                {/* GitHub Button */}
+
                                                 <Button
                                                     variant="ghost"
                                                     size="sm"
@@ -359,17 +331,13 @@ export default function MentorsPage() {
                                     </Card>
                                 </HoverCardTrigger>
 
-                                {/* --- Updated HoverCardContent --- */}
-                                {/* Content that appears on hover - Image Left, Description Right */}
                                 <HoverCardContent className="w-96 bg-black border border-white/20 text-white p-4 rounded-lg shadow-xl">
                                     <div className="flex items-start space-x-4">
-                                        {/* Left Column: Image - Increased Size */}
                                         <img
                                             src={mentor.avatar}
                                             alt={`Mentor ${mentor.name}`}
-                                            className="w-40 h-40 rounded-md object-cover flex-shrink-0" // Increased from w-32 h-32
+                                            className="w-40 h-40 rounded-md object-cover flex-shrink-0"
                                         />
-                                        {/* Right Column: Description */}
                                         <div className="flex-1 min-w-0">
                                             {mentor.description ? (
                                                 <p className="text-sm text-white/80 font-mono">
@@ -383,12 +351,9 @@ export default function MentorsPage() {
                                         </div>
                                     </div>
                                 </HoverCardContent>
-                                {/* --- End HoverCardContent --- */}
                             </HoverCard>
                         </motion.div>
-                        // --- End HoverCard ---
                     ))}
-                    {/* Display message if no mentors match search */}
                     {filteredMentors.length === 0 && searchTerm && (
                         <motion.div
                             className="md:col-span-2 text-center py-10"

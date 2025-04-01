@@ -22,7 +22,6 @@ export default function LandingPage() {
         updateTime();
         const interval = setInterval(updateTime, 1000);
 
-        // Simple fade in all content at once
         setTimeout(() => {
             setShowContent(true);
         }, 300);
@@ -32,11 +31,9 @@ export default function LandingPage() {
 
     return (
         <div className="relative w-full h-screen bg-black text-white overflow-hidden">
-            {/* Stars background */}
             <StarsBackground starDensity={0.0002} />
             <ShootingStars />
 
-            {/* Gradient line at top */}
             <div
                 className="absolute top-0 left-0 w-full h-1 z-10"
                 style={{

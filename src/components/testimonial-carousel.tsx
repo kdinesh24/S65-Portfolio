@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { StarsBackground } from "./ui/stars-background"; // Assuming these exist
-import { ShootingStars } from "./ui/shooting-stars"; // Assuming these exist
+import { StarsBackground } from "./ui/stars-background";
+import { ShootingStars } from "./ui/shooting-stars";
 
 interface Testimonial {
     id: string;
@@ -13,117 +13,117 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
     {
         id: "t1",
-        quote: "I'm on the cutting edge of no-code tools that allow me to bring my creative visions to life. Though my methods may be unconventional, my dedication to the craft is unparalleled.", // Kept original
+        quote: "I'm on the cutting edge of no-code tools that allow me to bring my creative visions to life. Though my methods may be unconventional, my dedication to the craft is unparalleled.",
         author: "ABHINAV RAHUL",
     },
     {
         id: "t2",
-        quote: "Blending Python's power with C++ efficiency, and building dynamic web experiences with React and Node.", // Added
+        quote: "Blending Python's power with C++ efficiency, and building dynamic web experiences with React and Node.",
         author: "AKSHIT SHARMA",
     },
     {
         id: "t3",
-        quote: "I'm on the cutting edge of no-code tools that allow me to bring my creative visions to life. Though my methods may be unconventional, my dedication to the craft is unparalleled.", // Kept original
+        quote: "I'm on the cutting edge of no-code tools that allow me to bring my creative visions to life. Though my methods may be unconventional, my dedication to the craft is unparalleled.",
         author: "ANKIT KUMAR",
     },
     {
         id: "t4",
-        quote: "Crafting robust full-stack solutions with Next.js and TypeScript, backed by Python and SQL.", // Added
+        quote: "Crafting robust full-stack solutions with Next.js and TypeScript, backed by Python and SQL.",
         author: "ARMAN KAR",
     },
     {
         id: "t5",
-        quote: "I'm on the cutting edge of no-code tools that allow me to bring my creative visions to life. Though my methods may be unconventional, my dedication to the craft is unparalleled.", // Kept original
+        quote: "I'm on the cutting edge of no-code tools that allow me to bring my creative visions to life. Though my methods may be unconventional, my dedication to the craft is unparalleled.",
         author: "CHAITANYA PAWAR",
     },
     {
         id: "t6",
-        quote: "Driven by curiosity, I'm constantly exploring new technologies and seeking opportunities to innovate.", // Added
+        quote: "Driven by curiosity, I'm constantly exploring new technologies and seeking opportunities to innovate.",
         author: "GOURISH CHOUHAN",
     },
     {
         id: "t7",
-        quote: "I'm on the cutting edge of no-code tools that allow me to bring my creative visions to life. Though my methods may be unconventional, my dedication to the craft is unparalleled.", // Kept original
+        quote: "I'm on the cutting edge of no-code tools that allow me to bring my creative visions to life. Though my methods may be unconventional, my dedication to the craft is unparalleled.",
         author: "GR MONISH",
     },
     {
         id: "t8",
-        quote: "Learning by building. Every line of code on GitHub is a step forward in my tech journey.", // Added
+        quote: "Learning by building. Every line of code on GitHub is a step forward in my tech journey.",
         author: "HIMANSHU GUPTA",
     },
     {
         id: "t9",
-        quote: "Passionate about understanding how technology shapes our world and eager to contribute.", // Added
+        quote: "Passionate about understanding how technology shapes our world and eager to contribute.",
         author: "HRITHIK VASANTHRAM",
     },
     {
         id: "t10",
-        quote: "Building seamless full-stack applications is my passion, leveraging Python, Next.js, and TypeScript.", // Added
+        quote: "Building seamless full-stack applications is my passion, leveraging Python, Next.js, and TypeScript.",
         author: "K DINESH",
     },
     {
         id: "t11",
-        quote: "Always eager to learn, adapt, and apply new technological concepts to solve problems.", // Added
+        quote: "Always eager to learn, adapt, and apply new technological concepts to solve problems.",
         author: "KISHORE J",
     },
     {
         id: "t12",
-        quote: "From system-level C++ to dynamic web apps with React/Node, I embrace diverse coding challenges.", // Added
+        quote: "From system-level C++ to dynamic web apps with React/Node, I embrace diverse coding challenges.",
         author: "MANTENA NAGA SAI NITIN VARMA",
     },
     {
         id: "t13",
-        quote: "Combining strong fundamentals in Python/C++ with modern web tech like React and Node.", // Added
+        quote: "Combining strong fundamentals in Python/C++ with modern web tech like React and Node.",
         author: "MOHANRAJ A",
     },
     {
         id: "t14",
-        quote: "My focus lies in leveraging Python/C++ alongside creating engaging frontends with React/JS.", // Added
+        quote: "My focus lies in leveraging Python/C++ alongside creating engaging frontends with React/JS.",
         author: "NAVANEETH M",
     },
     {
         id: "t15",
-        quote: "Dedicated to creating intuitive and visually appealing user interfaces with React and modern web standards.", // Added
+        quote: "Dedicated to creating intuitive and visually appealing user interfaces with React and modern web standards.",
         author: "NIKHIL PAGADALA",
     },
     {
         id: "t16",
-        quote: "Exploring the breadth of programming with Python, C++, Java, and React to build versatile solutions.", // Added
+        quote: "Exploring the breadth of programming with Python, C++, Java, and React to build versatile solutions.",
         author: "NISHAT AYUB",
     },
     {
         id: "t17",
-        quote: "Mastering the MERN stack to deliver end-to-end web applications with efficiency and scalability.", // Added
+        quote: "Mastering the MERN stack to deliver end-to-end web applications with efficiency and scalability.",
         author: "P PURUSHOTTAM NAIDU",
     },
     {
         id: "t18",
-        quote: "Building a solid foundation in web development, focusing on Python and core frontend technologies.", // Added
+        quote: "Building a solid foundation in web development, focusing on Python and core frontend technologies.",
         author: "ROHIT KUMAR",
     },
     {
         id: "t19",
-        quote: "Proficient across multiple languages like Python, C++, Java, and applying them to React development.", // Added
+        quote: "Proficient across multiple languages like Python, C++, Java, and applying them to React development.",
         author: "ROHITRAJ K.A",
     },
     {
         id: "t20",
-        quote: "Bridging the gap between powerful backend languages like C++/Python and interactive React frontends.", // Added
+        quote: "Bridging the gap between powerful backend languages like C++/Python and interactive React frontends.",
         author: "SAJIN SAJI GEORGE",
     },
     {
         id: "t21",
-        quote: "Engaging with the tech community and continuously learning is key to my growth as a developer.", // Added
+        quote: "Engaging with the tech community and continuously learning is key to my growth as a developer.",
         author: "SANJEEV M.S",
     },
     {
         id: "t22",
-        quote: "Developing full-stack solutions with a blend of Python, Java, React, and Node.js expertise.", // Added
+        quote: "Developing full-stack solutions with a blend of Python, Java, React, and Node.js expertise.",
         author: "SHUBH NAWANI",
     },
     {
         id: "t23",
-        quote: "Specializing in backend development using Python and the robust Node.js ecosystem (Express, MongoDB).", // Added
+        quote: "Specializing in backend development using Python and the robust Node.js ecosystem (Express, MongoDB).",
         author: "SUJAL BHATT",
     },
 ];
@@ -136,19 +136,16 @@ export default function TestimonialCarousel() {
         setIsClient(true);
     }, []);
 
-    // Calculate total width for seamless scrolling
-    const itemWidth = 400; // Corresponds to min/max-width of TestimonialCard
-    const gap = 24; // Corresponds to gap-6 (6 * 4px)
+    const itemWidth = 400;
+    const gap = 24;
     const totalWidth = (itemWidth + gap) * testimonials.length;
 
     return (
         <div className="relative bg-black text-white font-mono py-32 overflow-hidden">
-            {/* Stars background and shooting stars */}
             <StarsBackground starDensity={0.0002} />
             <ShootingStars />
 
             <div className="relative">
-                {/* Apply mask for fading edges */}
                 <div
                     className="overflow-hidden"
                     style={{
@@ -161,19 +158,15 @@ export default function TestimonialCarousel() {
                     {isClient && (
                         <div
                             ref={scrollRef}
-                            className="flex gap-6 items-stretch" // items-stretch ensures cards take full height
+                            className="flex gap-6 items-stretch"
                             style={{
-                                // Duplicate the content for seamless looping
                                 width: `${totalWidth * 2}px`,
-                                // Animation definition
                                 animation: `scroll ${testimonials.length * 5}s linear infinite`,
                             }}
                         >
-                            {/* Render testimonials twice for seamless loop */}
                             {[...testimonials, ...testimonials].map(
                                 (item, index) => (
                                     <TestimonialCard
-                                        // Ensure unique keys even for duplicates
                                         key={`${item.id}-${index}`}
                                         testimonial={item}
                                     />
@@ -184,7 +177,6 @@ export default function TestimonialCarousel() {
                 </div>
             </div>
 
-            {/* Add the keyframes CSS */}
             <style jsx global>{`
                 @keyframes scroll {
                     0% {
@@ -195,7 +187,6 @@ export default function TestimonialCarousel() {
                     }
                 }
                 .animate-scroll {
-                    /* This class is now just a marker, animation is applied via style */
                 }
             `}</style>
 
@@ -230,19 +221,15 @@ export default function TestimonialCarousel() {
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
     return (
-        // Removed outer div, applied styles directly here
         <div className="bg-black/60 backdrop-blur-sm border border-white/10 rounded-2xl p-6 w-[400px] flex flex-col relative flex-shrink-0">
             <div className="text-white font-mono text-base mb-6 flex-grow min-h-[100px]">
-                {" "}
-                {/* Added min-height */}"
+                "
                 {testimonial.quote ||
                     "Passionate student exploring the world of technology."}
-                " {/* Added default quote */}
+                "
             </div>
 
             <div className="flex items-center mt-auto">
-                {" "}
-                {/* Use mt-auto to push author to bottom */}
                 <div>
                     <div className="text-white font-mono font-semibold">
                         {testimonial.author}

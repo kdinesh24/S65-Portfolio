@@ -91,7 +91,6 @@ export default function ProjectsPage() {
         updateTime();
         const interval = setInterval(updateTime, 1000);
 
-        // Set isLoaded to true after a short delay
         setTimeout(() => {
             setIsLoaded(true);
         }, 300);
@@ -110,7 +109,6 @@ export default function ProjectsPage() {
             )
     );
 
-    // Animation variants
     const fadeIn = {
         hidden: { opacity: 0 },
         visible: { opacity: 1 },
@@ -207,7 +205,6 @@ export default function ProjectsPage() {
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50 w-4 h-4" />
                         <Input
                             type="text"
-                            placeholder="Search projects..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             className="bg-white/5 border-white/10 text-white pl-10 font-mono"

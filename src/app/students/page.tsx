@@ -2,28 +2,25 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-// Using img tag directly as per the original code for HoverCardContent
-// import Image from "next/image";
 import {
     Card,
     CardContent,
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card"; // Assuming path is correct
-import { Input } from "@/components/ui/input"; // Assuming path is correct
-import { Badge } from "@/components/ui/badge"; // Assuming path is correct
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"; // Assuming path is correct
-import { Button } from "@/components/ui/button"; // Assuming path is correct
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { Search, Github, Linkedin } from "lucide-react";
 import {
     HoverCard,
     HoverCardContent,
     HoverCardTrigger,
-} from "@/components/ui/hover-card"; // Assuming path is correct
+} from "@/components/ui/hover-card";
 import { motion } from "framer-motion";
 
-// Included shortDescription fields
 const studentsData = [
     {
         id: 1,
@@ -363,7 +360,6 @@ export default function StudentsPage() {
 
     return (
         <div className="relative w-full min-h-screen bg-black text-white overflow-hidden">
-            {/* Gradient Bar */}
             <div
                 className="absolute top-0 left-0 w-full h-1 z-10"
                 style={{
@@ -373,7 +369,6 @@ export default function StudentsPage() {
                     animation: "gradientMove 8s linear infinite",
                 }}
             />
-            {/* CSS for Line Clamp */}
             <style jsx>{`
                 @keyframes gradientMove {
                     0% {
@@ -392,7 +387,6 @@ export default function StudentsPage() {
                 }
             `}</style>
 
-            {/* Header */}
             <motion.header
                 className="flex justify-between items-center p-6"
                 initial="hidden"
@@ -414,7 +408,6 @@ export default function StudentsPage() {
                 </div>
             </motion.header>
 
-            {/* Main Content */}
             <motion.main
                 className="container mx-auto px-6 py-2"
                 initial="hidden"
@@ -422,7 +415,6 @@ export default function StudentsPage() {
                 variants={fadeIn}
                 transition={{ duration: 0.8, delay: 0.2 }}
             >
-                {/* Title Section */}
                 <motion.div
                     className="flex items-center justify-center mb-8"
                     variants={fadeIn}
@@ -443,7 +435,6 @@ export default function StudentsPage() {
                     </h1>
                 </motion.div>
 
-                {/* Search Bar */}
                 <motion.div
                     className="mb-10 max-w-md mx-auto"
                     variants={fadeIn}
@@ -453,7 +444,6 @@ export default function StudentsPage() {
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50 w-4 h-4" />
                         <Input
                             type="text"
-                            placeholder="Search students..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             className="bg-white/5 border-white/10 text-white pl-10 font-mono"
@@ -461,7 +451,6 @@ export default function StudentsPage() {
                     </div>
                 </motion.div>
 
-                {/* Student Cards Grid */}
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-3 gap-6"
                     variants={staggerContainer}
@@ -476,9 +465,7 @@ export default function StudentsPage() {
                         >
                             <HoverCard>
                                 <HoverCardTrigger asChild>
-                                    {/* Card Structure */}
                                     <Card className="bg-white/5 border-white/10 text-white hover:bg-white/10 transition-colors overflow-hidden relative flex flex-col justify-between h-[270px] cursor-pointer">
-                                        {/* Card Header */}
                                         <CardHeader className="flex flex-row items-center gap-4 pb-2">
                                             <Avatar className="h-10 w-10 border border-white/20">
                                                 {!imageError[student.id] ? (
@@ -506,9 +493,7 @@ export default function StudentsPage() {
                                             </div>
                                         </CardHeader>
 
-                                        {/* Card Content - ORDER SWAPPED */}
                                         <CardContent className="flex-grow flex flex-col gap-3 pt-2 pb-2 overflow-hidden">
-                                            {/* Skills Badges (Now First) */}
                                             <div className="flex flex-wrap gap-2">
                                                 {student.skills
                                                     .slice(0, 4)
@@ -523,17 +508,14 @@ export default function StudentsPage() {
                                                     ))}
                                             </div>
 
-                                            {/* Short Description with Line Clamp (Now Second) */}
                                             <p className="font-mono text-xs text-white/70 line-clamp-2">
                                                 {student.shortDescription ||
                                                     student.description}
                                             </p>
                                         </CardContent>
 
-                                        {/* Card Footer - Links */}
                                         <CardFooter className="flex justify-between items-center border-t border-white/10 pt-4 mt-auto">
-                                            <div></div>{" "}
-                                            {/* Alignment placeholder */}
+                                            <div></div>
                                             <div className="flex gap-3">
                                                 {student.linkedin && (
                                                     <Button
@@ -548,7 +530,7 @@ export default function StudentsPage() {
                                                             );
                                                         }}
                                                     >
-                                                        <Linkedin className="h-3 w-3 mr-1" />{" "}
+                                                        <Linkedin className="h-3 w-3 mr-1" />
                                                         CONNECT
                                                     </Button>
                                                 )}
@@ -565,7 +547,7 @@ export default function StudentsPage() {
                                                             );
                                                         }}
                                                     >
-                                                        <Github className="h-3 w-3 mr-1" />{" "}
+                                                        <Github className="h-3 w-3 mr-1" />
                                                         PROFILE
                                                     </Button>
                                                 )}
@@ -574,7 +556,6 @@ export default function StudentsPage() {
                                     </Card>
                                 </HoverCardTrigger>
 
-                                {/* Hover Card Content (Detailed Description) */}
                                 <HoverCardContent className="w-96 bg-black border border-white/20 text-white p-4 rounded-lg shadow-xl">
                                     <div className="flex items-start space-x-4">
                                         <img
@@ -603,7 +584,6 @@ export default function StudentsPage() {
                             </HoverCard>
                         </motion.div>
                     ))}
-                    {/* No Results Message */}
                     {filteredStudents.length === 0 && searchTerm && (
                         <motion.div
                             className="md:col-span-3 text-center py-10"
@@ -617,7 +597,6 @@ export default function StudentsPage() {
                 </motion.div>
             </motion.main>
 
-            {/* Footer */}
             <motion.footer
                 className="p-6 flex flex-col justify-center items-center border-t border-white/10 mt-20"
                 initial="hidden"
