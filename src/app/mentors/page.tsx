@@ -328,13 +328,13 @@ export default function MentorsPage() {
                                 <HoverCardContent className="w-96 bg-black border border-white/20 text-white p-4 rounded-lg shadow-xl">
                                     <div className="flex items-start space-x-4">
                                         <div className="w-40 h-40 rounded-md object-cover flex-shrink-0 relative">
-                                             <Image
+                                            <Image
                                                 src={mentor.avatar}
                                                 alt={`Mentor ${mentor.name}`}
                                                 fill
                                                 sizes="10rem"
                                                 className="rounded-md object-cover"
-                                             />
+                                            />
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             {mentor.description ? (
@@ -358,7 +358,8 @@ export default function MentorsPage() {
                             variants={fadeIn}
                         >
                             <p className="font-mono text-white/70">
-                                No mentors found matching &quot;{searchTerm}&quot;.
+                                No mentors found matching &quot;{searchTerm}
+                                &quot;.
                             </p>
                         </motion.div>
                     )}

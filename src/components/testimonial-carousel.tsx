@@ -223,10 +223,10 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
     return (
         <div className="bg-black/60 backdrop-blur-sm border border-white/10 rounded-2xl p-6 w-[400px] flex flex-col relative flex-shrink-0">
             <div className="text-white font-mono text-base mb-6 flex-grow min-h-[100px]">
-                "
+                &quot; {/* Escaped quote */}
                 {testimonial.quote ||
                     "Passionate student exploring the world of technology."}
-                "
+                &quot; {/* Escaped quote */}
             </div>
 
             <div className="flex items-center mt-auto">

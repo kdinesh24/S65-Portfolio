@@ -144,8 +144,8 @@ export default function LandingPage() {
                         <span>65</span>
                     </div>
                     <p className="font-mono text-lg mt-2">
-                        CRAFTED TO PROVE WE KNOW WHAT WE&apos;RE DOING. A LITTLE FLEX{" "}
-                        <br />
+                        CRAFTED TO PROVE WE KNOW WHAT WE&apos;RE DOING. A LITTLE
+                        FLEX <br />
                         ON DESIGN, A LOT OF SKILL IN EXECUTION.
                     </p>
                 </div>

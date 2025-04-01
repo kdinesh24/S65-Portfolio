@@ -566,8 +566,10 @@ export default function StudentsPage() {
                                                 fill
                                                 sizes="10rem"
                                                 className="rounded-md object-cover"
-                                                onError={(e) => {
-                                                    e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(student.name)}&background=random`;
+                                                onError={() => {
+                                                    console.error(
+                                                        `Failed to load image for ${student.name}`
+                                                    );
                                                 }}
                                             />
                                         </div>
@@ -595,7 +597,8 @@ export default function StudentsPage() {
                             variants={fadeIn}
                         >
                             <p className="font-mono text-white/70">
-                                No students found matching &quot;{searchTerm}&quot;.
+                                No students found matching &quot;{searchTerm}
+                                &quot;.
                             </p>
                         </motion.div>
                     )}

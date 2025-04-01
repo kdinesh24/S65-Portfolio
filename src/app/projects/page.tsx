@@ -292,7 +292,8 @@ export default function ProjectsPage() {
                             variants={fadeIn}
                         >
                             <p className="font-mono text-white/70">
-                                No projects found matching &quot;{searchTerm}&quot;.
+                                No projects found matching &quot;{searchTerm}
+                                &quot;.
                             </p>
                         </motion.div>
                     )}
