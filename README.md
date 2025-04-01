@@ -47,8 +47,3 @@ This portfolio is built with:
 - [Next.js](https://nextjs.org/) - React framework for production.
 - [TypeScript](https://www.typescriptlang.org/) - Static type-checking.
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework.
-
-## 🔗 Links
-
-- **GitHub Repository**: [https://github.com/Kalvium-Squad-65](https://github.com/kdinesh24/S65-Portfolio)
-- **Live Deployment**: [https://kalvium-squad65.vercel.app](https://s65-portfolio.vercel.app)
