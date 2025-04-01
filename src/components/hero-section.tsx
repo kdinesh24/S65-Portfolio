@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ShootingStars } from "./ui/shooting-stars";
-import { StarsBackground } from "./ui/stars-background";
 import { motion } from "framer-motion";
 
 export default function LandingPage() {
@@ -30,10 +28,7 @@ export default function LandingPage() {
     }, []);
 
     return (
-        <div className="relative w-full h-screen bg-black text-white overflow-hidden">
-            <StarsBackground starDensity={0.0002} />
-            <ShootingStars />
-
+        <div className="relative w-full h-screen bg-transparent text-white overflow-hidden">
             <div
                 className="absolute top-0 left-0 w-full h-1 z-10"
                 style={{

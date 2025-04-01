@@ -70,7 +70,7 @@ const projectsData = [
         tech: ["React", "TailwindCSS", "Node.js", "MongoDB"],
         github: "https://github.com/kdinesh24/Ecommerce-Follow-Along.git",
         website:
-            "https://frontend-e-commerce-nine.vercel.app/ecommerce-follow-along",
+            "https://frontend-e-commerce-nine.vercel.app",
     },
 ];
 

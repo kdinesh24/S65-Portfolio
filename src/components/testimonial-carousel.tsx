@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { StarsBackground } from "./ui/stars-background";
-import { ShootingStars } from "./ui/shooting-stars";
 
 interface Testimonial {
     id: string;
@@ -141,10 +139,7 @@ export default function TestimonialCarousel() {
     const totalWidth = (itemWidth + gap) * testimonials.length;
 
     return (
-        <div className="relative bg-black text-white font-mono py-32 overflow-hidden">
-            <StarsBackground starDensity={0.0002} />
-            <ShootingStars />
-
+        <div className="relative bg-transparent text-white font-mono py-32 overflow-hidden">
             <div className="relative">
                 <div
                     className="overflow-hidden"
