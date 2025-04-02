@@ -41,8 +41,8 @@ const projectsData = [
         description:
             "PawPay lets users upload, share, and comment on hilarious animal videos. Connect with pet lovers and spread joy through amusing clips of furry companions worldwide!",
         tech: ["React", "TailwindCSS", "Node.js", "MongoDB"],
-        github: "",
-        website: "",
+        github: "https://github.com/kalviumcommunity/S65_The_Funniest_Animal_Videos.git",
+        website: "https://pawplay-dinesh1124k-gmailcoms-projects.vercel.app",
     },
     {
         id: 4,
@@ -51,7 +51,7 @@ const projectsData = [
             "Showcasing Kalvium Squad 65's talent! Explore impressive projects, connect with skilled developers, and witness the innovation born from this dynamic cohort.",
         tech: ["Next.js", "TailwindCSS", "Shadcn-UI", "TypeScript"],
         github: "https://github.com/kdinesh24/S65-Portfolio",
-        website: "",
+        website: "https://s65-portfolio.vercel.app/",
     },
     {
         id: 5,
